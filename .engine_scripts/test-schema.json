@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-06/schema#",
   "$ref": "#/definitions/Welcome10",
   "definitions": {
-    "Welcome10": {
+    "TestSuite": {
       "type": "object",
       "additionalProperties": false,
       "properties": {
@@ -40,7 +40,7 @@
       "required": [
         "scenarios"
       ],
-      "title": "Welcome10"
+      "title": "TestSuite"
     },
     "Env": {
       "type": "object",
@@ -109,12 +109,70 @@
         },
         "clickSelector": {
           "type": "string"
+        },
+        "actions": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "$ref": "#/definitions/ClickAction"
+              },
+              {
+                "$ref": "#/definitions/HideAction"
+              },
+              {
+                "$ref": "#/definitions/HoverAction"
+              },
+              {
+                "$ref": "#/definitions/InputAction"
+              }
+            ]
+          }
         }
       },
       "required": [
         "url"
       ],
       "title": "URL"
+    },
+    "ClickAction": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "click": {
+          "type": "string"
+        }
+      }
+    },
+    "HideAction": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "hide": {
+          "type": "string"
+        }
+      }
+    },
+    "HoverAction": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "hover": {
+          "type": "string"
+        }
+      }
+    },
+    "InputAction": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "input": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      }
     }
   }
 }
