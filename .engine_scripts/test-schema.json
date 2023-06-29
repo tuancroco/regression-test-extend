@@ -1,0 +1,117 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$ref": "#/definitions/Welcome10",
+  "definitions": {
+    "Welcome10": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "useCssOverride": {
+          "type": "boolean"
+        },
+        "env": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Env"
+          }
+        },
+        "cssOverridePath": {
+          "type": "string"
+        },
+        "hideSelectors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "removeSelectors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "scenarios": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/URL"
+          }
+        }
+      },
+      "required": [
+        "scenarios"
+      ],
+      "title": "Welcome10"
+    },
+    "Env": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "ref": {
+          "type": "string",
+          "format": "uri",
+          "qt-uri-protocols": [
+            "https"
+          ]
+        },
+        "test": {
+          "type": "string",
+          "format": "uri",
+          "qt-uri-protocols": [
+            "https"
+          ]
+        }
+      },
+      "required": [
+        "ref",
+        "test"
+      ],
+      "title": "Env"
+    },
+    "URL": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "url": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "delay": {
+          "type": "number"
+        },
+        "useCssOverride": {
+          "type": "boolean"
+        },
+        "cssOverridePath": {
+          "type": "string"
+        },
+        "cookiePath": {
+          "type": "string"
+        },
+        "jsOnReadyPath": {
+          "type": "string"
+        },
+        "hideSelectors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "removeSelectors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "url"
+      ],
+      "title": "URL"
+    }
+  }
+}
