@@ -1,0 +1,9 @@
+scenarios:
+  # Testing the page without any user interaction
+  - url: https://www.tuyen.xyz/utils/general/color-blender/
+
+  # Verify that when clicked, the spoiler on top of the page will expand
+  - url: https://www.tuyen.xyz/utils/general/color-blender/
+    label: Click the spoiler
+    # click the spoiler, it contains the text: `Click here to show the instruction for use.`
+    clickSelector: main .t-spoiler__summary

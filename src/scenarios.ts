@@ -1,36 +1,18 @@
-import { Scenario } from "backstopjs";
 import { ScenarioModel } from "./types";
 
-export const createScenario = ({
-  url,
-  index,
-  total,
-  delay,
-  hideSelectors,
-  removeSelectors,
-  useCssOverride,
-  cssOverridePath,
-  referenceUrl,
-  cookiePath,
-  jsOnReadyPath,
-  label
-}: ScenarioModel): Scenario => {
-  const parsedUrl = new URL(url);
+export const createScenario = (opts: ScenarioModel): ScenarioModel => {
+  const parsedUrl = new URL(opts.url);
 
   return {
-    label: label ?? `${index + 1} of ${total}: ${parsedUrl.pathname}`,
-    cookiePath: cookiePath ?? 'data/_cookies.yaml',
-    cssOverridePath: cssOverridePath ?? 'data/_override.css',
-    jsOnReadyPath: jsOnReadyPath ?? 'data/_on-ready.js',
-    useCssOverride,
-    url,
-    referenceUrl: referenceUrl ?? '',
+    ...opts,
+    label: opts.label ?? `${opts.index + 1} of ${opts.total}: ${parsedUrl.pathname}`,
+    cookiePath: opts.cookiePath ?? 'data/_cookies.yaml',
+    cssOverridePath: opts.cssOverridePath ?? 'data/_override.css',
+    jsOnReadyPath: opts.jsOnReadyPath ?? 'data/_on-ready.js',
+    referenceUrl: opts.referenceUrl ?? '',
     readyEvent: '',
-    delay,
-    hideSelectors: hideSelectors ?? [],
-    removeSelectors: removeSelectors ?? [],
-    hoverSelector: '',
-    clickSelector: '',
+    hideSelectors: opts.hideSelectors ?? [],
+    removeSelectors: opts.removeSelectors ?? [],
     postInteractionWait: 0,
     selectors: [],
     selectorExpansion: true,

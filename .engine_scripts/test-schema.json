@@ -106,6 +106,9 @@
           "items": {
             "type": "string"
           }
+        },
+        "clickSelector": {
+          "type": "string"
         }
       },
       "required": [
