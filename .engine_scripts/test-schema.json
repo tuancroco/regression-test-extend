@@ -125,6 +125,9 @@
               },
               {
                 "$ref": "#/definitions/InputAction"
+              },
+              {
+                "$ref": "#/definitions/RemoveAction"
               }
             ]
           }
@@ -170,6 +173,15 @@
           "type": "string"
         },
         "value": {
+          "type": "string"
+        }
+      }
+    },
+    "RemoveAction": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "remove": {
           "type": "string"
         }
       }
