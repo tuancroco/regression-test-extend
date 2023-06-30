@@ -30,11 +30,12 @@ scenarios:
         value: green
       - click: '#color-blender-color-midpoints'
       - click: .t-o-color-blender__midpoint-list-item:nth-child(10)
+      - wait: 1000
 
   # Scenario 5
   # Verify the visual with invalid input
   - url: https://www.tuyen.xyz/utils/general/color-blender/
-    label: Check visual for specific input
+    label: Check visual for invalid input
     actions:
       - input: '#color-blender-color-1'
         # Input an invalid web color
@@ -43,3 +44,4 @@ scenarios:
         value: green
       - click: '#color-blender-color-midpoints'
       - click: .t-o-color-blender__midpoint-list-item:nth-child(10)
+      - wait: 1000
