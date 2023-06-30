@@ -19,7 +19,8 @@ module.exports = async (page, scenario) => {
     if (!!action.hide) {
       console.log('Hide:', action.hide);
       await page.waitForSelector(action.hide);
-      throw 'Not implemented';
+      let el = await page.locator(action.hide);
+      await el.evaluate((node) => node.style.setProperty('visibility', 'hidden', 'important'));
     }
 
     if (!!action.hover) {
@@ -43,7 +44,8 @@ module.exports = async (page, scenario) => {
     if (!!action.remove) {
       console.log('Remove:', action.remove);
       await page.waitForSelector(action.remove);
-      throw 'Not implemented';
+      let el = await page.locator(action.hide);
+      await el.evaluate((node) => node.style.setProperty('display', 'none', 'important'));
     }
 
     if (!!action.press) {
