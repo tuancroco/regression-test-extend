@@ -31,7 +31,13 @@ module.exports = async (page, scenario) => {
     if (!!action.input) {
       console.log('Input:', action.input, action.value);
       await page.waitForSelector(action.input);
-      await page.locator(action.input).type(action.value);
+      let el = await page.locator(action.input);
+
+      if (!action.append) {
+        await el.evaluate((node) => (node.value = ''));
+      }
+
+      await el.type(action.value);
     }
 
     if (!!action.remove) {

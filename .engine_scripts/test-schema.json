@@ -189,6 +189,9 @@
         },
         "value": {
           "type": "string"
+        },
+        "append": {
+          "type": "boolean"
         }
       },
       "required": [
