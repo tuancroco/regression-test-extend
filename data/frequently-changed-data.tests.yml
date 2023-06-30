@@ -1,0 +1,15 @@
+scenarios:
+  # Scenario:
+  # Testing the page without the chard
+  - url: https://www.tuyen.xyz/optimizely-cms/testing/frequently-changed-data-test-sample/
+    label: Test page without the chard - 1st way
+    hideSelectors:
+      - '#myChart'
+
+  # Scenario:
+  # Testing the page without the chard
+  # Note that this scenario will be identical with the previous one, using diffrent way to write
+  - url: https://www.tuyen.xyz/optimizely-cms/testing/frequently-changed-data-test-sample/
+    label: Test page without the chard - 2nd way
+    actions:
+      - hide: '#myChart'
