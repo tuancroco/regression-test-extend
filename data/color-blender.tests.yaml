@@ -12,7 +12,7 @@ scenarios:
     clickSelector: main .t-spoiler__summary
 
   # Scenario:
-  # Verify that when clicked 2 times, the spoiler on top of the page will collapse again
+  # Verify that when clicked second time, the spoiler on top of the page will collapses again
   - url: https://www.tuyen.xyz/utils/general/color-blender/
     label: Collapse the spoiler
     # Click the spoiler, it contains the text:
