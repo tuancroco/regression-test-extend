@@ -242,27 +242,20 @@
     "WaitAction": {
       "type": "object",
       "additionalProperties": false,
-      "oneOf": [
-        {
-          "properties": {
-            "wait": {
+      "properties": {
+        "wait": {
+          "oneOf": [
+            {
               "type": "string"
-            }
-          },
-          "required": [
-            "wait"
-          ]
-        },
-        {
-          "properties": {
-            "wait": {
+            },
+            {
               "type": "number"
             }
-          },
-          "required": [
-            "wait"
           ]
         }
+      },
+      "required": [
+        "wait"
       ]
     }
   }
