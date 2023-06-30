@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-06/schema#",
-  "$ref": "#/definitions/Welcome10",
+  "$ref": "#/definitions/TestSuite",
   "definitions": {
     "TestSuite": {
       "type": "object",
@@ -154,7 +154,10 @@
         "hide": {
           "type": "string"
         }
-      }
+      },
+      "required": [
+        "hide"
+      ]
     },
     "HoverAction": {
       "type": "object",
@@ -163,7 +166,10 @@
         "hover": {
           "type": "string"
         }
-      }
+      },
+      "required": [
+        "hover"
+      ]
     },
     "InputAction": {
       "type": "object",
@@ -175,7 +181,27 @@
         "value": {
           "type": "string"
         }
-      }
+      },
+      "required": [
+        "input",
+        "value"
+      ]
+    },
+    "PressAction": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "press": {
+          "type": "string"
+        },
+        "key": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "press",
+        "key"
+      ]
     },
     "RemoveAction": {
       "type": "object",
@@ -184,7 +210,36 @@
         "remove": {
           "type": "string"
         }
-      }
+      },
+      "required": [
+        "remove"
+      ]
+    },
+    "WaitAction": {
+      "type": "object",
+      "additionalProperties": false,
+      "oneOf": [
+        {
+          "properties": {
+            "wait": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "wait"
+          ]
+        },
+        {
+          "properties": {
+            "wait": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "wait"
+          ]
+        }
+      ]
     }
   }
 }

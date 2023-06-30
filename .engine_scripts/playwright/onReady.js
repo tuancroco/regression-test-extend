@@ -6,7 +6,11 @@ module.exports = async (page, scenario, viewport, isReference, browserContext) =
   if (scenario.useCssOverride) {
     await require('./overrideCSS')(page, scenario);
   }
-  await require('./clickAndHoverHelper')(page, scenario);
+  if (!!scenario.actions) {
+    await require('./action')(page, scenario);
+  } else {
+    await require('./clickAndHoverHelper')(page, scenario);
+  }
 
   const jsOnReadyPath = scenario.jsOnReadyPath;
 
@@ -18,9 +22,7 @@ module.exports = async (page, scenario, viewport, isReference, browserContext) =
   }
 
   const jsOnReadyScript = fs.readFileSync(jsOnReadyPath, 'utf-8');
-  await page
-    .evaluate(jsOnReadyScript)
-    .then(() => "ONREADY script executed for: " + scenario.label);
+  await page.evaluate(jsOnReadyScript).then(() => 'ONREADY script executed for: ' + scenario.label);
 
   // add more ready handlers here...
   await page.evaluate(autoScroll);
