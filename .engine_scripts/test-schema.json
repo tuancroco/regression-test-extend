@@ -127,7 +127,16 @@
                 "$ref": "#/definitions/InputAction"
               },
               {
+                "$ref": "#/definitions/PressAction"
+              },
+              {
                 "$ref": "#/definitions/RemoveAction"
+              },
+              {
+                "$ref": "#/definitions/ScrollAction"
+              },
+              {
+                "$ref": "#/definitions/WaitAction"
               }
             ]
           }
@@ -213,6 +222,18 @@
       },
       "required": [
         "remove"
+      ]
+    },
+    "ScrollAction": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "scroll": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "scroll"
       ]
     },
     "WaitAction": {
