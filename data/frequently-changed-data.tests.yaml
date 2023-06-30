@@ -13,3 +13,9 @@ scenarios:
     label: Test page without the chard - 2nd way
     actions:
       - hide: '#myChart'
+
+  # Scenario:
+  # Testing the page WITH the chart
+  # NOTE: This case will fails
+  - url: https://www.tuyen.xyz/optimizely-cms/testing/frequently-changed-data-test-sample/
+    label: Test page with the random chart
