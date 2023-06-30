@@ -1,17 +1,27 @@
 scenarios:
-  # Scenario 1
+  # Scenario:
   # Testing the page without any user interaction
   - url: https://www.tuyen.xyz/utils/general/color-blender/
 
-  # Scenario 2
+  # Scenario:
   # Verify that when clicked, the spoiler on top of the page will expands
   - url: https://www.tuyen.xyz/utils/general/color-blender/
-    label: Click the spoiler
+    label: Expand the spoiler
     # Click the spoiler, it contains the text:
     # `Click here to view the instructions for usage.`
     clickSelector: main .t-spoiler__summary
 
-  # Scenario 3
+  # Scenario:
+  # Verify that when clicked 2 times, the spoiler on top of the page will collapse again
+  - url: https://www.tuyen.xyz/utils/general/color-blender/
+    label: Collapse the spoiler
+    # Click the spoiler, it contains the text:
+    # `Click here to view the instructions for usage.`
+    actions:
+      - click: main .t-spoiler__summary
+      - click: main .t-spoiler__summary
+
+  # Scenario:
   # Verify that when RGB mode was clicked, the color values in pallete will
   # switch to RGB.
   - url: https://www.tuyen.xyz/utils/general/color-blender/
@@ -19,7 +29,7 @@ scenarios:
     # Click the RGB switch element
     clickSelector: main .t-o-color-blender__mode-toggle
 
-  # Scenario 4
+  # Scenario:
   # Verify the visual with specific input
   - url: https://www.tuyen.xyz/utils/general/color-blender/
     label: Check visual for specific input
@@ -30,9 +40,10 @@ scenarios:
         value: green
       - click: '#color-blender-color-midpoints'
       - click: .t-o-color-blender__midpoint-list-item:nth-child(10)
+      - click: main
       - wait: 1000
 
-  # Scenario 5
+  # Scenario:
   # Verify the visual with invalid input
   - url: https://www.tuyen.xyz/utils/general/color-blender/
     label: Check visual for invalid input
@@ -44,4 +55,5 @@ scenarios:
         value: green
       - click: '#color-blender-color-midpoints'
       - click: .t-o-color-blender__midpoint-list-item:nth-child(10)
+      - click: main
       - wait: 1000
