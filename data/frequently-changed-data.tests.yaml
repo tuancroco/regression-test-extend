@@ -8,7 +8,7 @@ scenarios:
 
   # Scenario:
   # Testing the page without the chard
-  # Note that this scenario will be identical with the previous one,
+  # Note that this scenario is identical with the previous one,
   # using a different syntax
   - url: https://www.tuyen.xyz/optimizely-cms/testing/frequently-changed-data-test-sample/
     label: Test page without the chart - 2nd way
