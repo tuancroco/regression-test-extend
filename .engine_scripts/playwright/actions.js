@@ -16,6 +16,13 @@ module.exports = async (page, scenario) => {
       await page.click(action.click);
     }
 
+    if (!!action.focus) {
+      console.log('Focus:', action.focus);
+      await page.waitForSelector(action.focus);
+      let el = await page.locator(action.focus);
+      el.focus();
+    }
+
     if (!!action.hide) {
       console.log('Hide:', action.hide);
       await page.waitForSelector(action.hide);
@@ -26,7 +33,7 @@ module.exports = async (page, scenario) => {
     if (!!action.hover) {
       console.log('Hover:', action.hover);
       await page.waitForSelector(action.hover);
-      await page.click(action.hover);
+      await page.locator(action.hover).hover();
     }
 
     if (!!action.input) {
@@ -54,6 +61,34 @@ module.exports = async (page, scenario) => {
       await page.locator(action.press).press(action.key);
     }
 
+    if (!!action.scroll) {
+      console.log('Scroll:', action.scroll);
+      await page.waitForSelector(action.scroll);
+      await page.evaluate((scrollToSelector) => {
+        document.querySelector(scrollToSelector).scrollIntoView();
+      }, action.scroll);
+    }
+
+    if (!!action.select) {
+      console.log('Select:', action.select);
+      if (!!action.value && !!action.label) {
+        throw 'Select action must have only either `value` or `label`, not both.';
+      }
+
+      if (!action.value && !action.label) {
+        throw 'Select action must have only either `value` or `label`';
+      }
+
+      await page.waitForSelector(action.select);
+
+      let el = await page.locator(action.hide);
+      if (!!action.value) {
+        await el.selectOption(action.value);
+      } else if (!!action.label) {
+        el.selectOption({ label: action.label });
+      }
+    }
+
     if (!!action.wait) {
       console.log('Wait:', action.wait);
       if (parseInt(action.wait) > 0) {
@@ -61,14 +96,6 @@ module.exports = async (page, scenario) => {
       } else {
         await page.waitForSelector(action.wait);
       }
-    }
-
-    if (!!action.scroll) {
-      console.log('Scroll:', action.scroll);
-      await page.waitForSelector(action.scroll);
-      await page.evaluate((scrollToSelector) => {
-        document.querySelector(scrollToSelector).scrollIntoView();
-      }, action.scroll);
     }
   }
 };

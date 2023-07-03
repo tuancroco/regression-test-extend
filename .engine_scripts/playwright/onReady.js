@@ -7,7 +7,7 @@ module.exports = async (page, scenario, viewport, isReference, browserContext) =
     await require('./overrideCSS')(page, scenario);
   }
   if (!!scenario.actions) {
-    await require('./action')(page, scenario);
+    await require('./actions')(page, scenario);
   } else {
     await require('./clickAndHoverHelper')(page, scenario);
   }
