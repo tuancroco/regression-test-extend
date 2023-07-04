@@ -3,9 +3,13 @@ const autoScroll = require('../auto-scroll');
 
 module.exports = async (page, scenario, viewport, isReference, browserContext) => {
   console.log('SCENARIO > ' + scenario.label);
+
   if (scenario.useCssOverride) {
     await require('./overrideCSS')(page, scenario);
   }
+
+  await page.evaluate(autoScroll);
+
   if (!!scenario.actions) {
     await require('./actions')(page, scenario);
   } else {
@@ -18,14 +22,11 @@ module.exports = async (page, scenario, viewport, isReference, browserContext) =
     return;
   } else if (!fs.existsSync(jsOnReadyPath)) {
     console.log('File not exist: ' + jsOnReadyPath);
-    return;
+  } else {
+    const jsOnReadyScript = fs.readFileSync(jsOnReadyPath, 'utf-8');
+    await page.evaluate(jsOnReadyScript).then(() => 'ONREADY script executed for: ' + scenario.label);
   }
 
-  const jsOnReadyScript = fs.readFileSync(jsOnReadyPath, 'utf-8');
-  await page.evaluate(jsOnReadyScript).then(() => 'ONREADY script executed for: ' + scenario.label);
-
   // add more ready handlers here...
-  await page.evaluate(autoScroll);
-
   // await page.waitForLoadState('load', { timeout: 5000 });
 };
