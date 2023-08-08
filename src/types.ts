@@ -21,5 +21,6 @@ export interface ScenarioModel extends Scenario {
   index: number;
   jsOnReadyPath?: string;
   total: number;
+  viewportNames?: string[];
   useCssOverride?: boolean;
 }

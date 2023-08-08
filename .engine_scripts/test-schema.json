@@ -110,6 +110,12 @@
         "clickSelector": {
           "type": "string"
         },
+        "viewportNames": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
         "actions": {
           "type": "array",
           "items": {

@@ -68,6 +68,7 @@ const getData = (testSuite: String): TestSuiteModel | undefined => {
 }
 
 const data = getData(testSuite);
+const viewports = parseDataFromFile(data?.viewportsPath ?? 'data/_viewports.yaml') as ViewportNext[];
 if (data) {
   data.scenarios.forEach((s, index) => {
     const opts: ScenarioModel = {
@@ -80,6 +81,7 @@ if (data) {
       removeSelectors: s.removeSelectors ?? data.removeSelectors,
       useCssOverride: s.useCssOverride ?? data.useCssOverride,
       jsOnReadyPath: s.jsOnReadyPath,
+      viewports: s.viewportNames ? viewports.filter(v => s.viewportNames?.includes(v.label)) : undefined,
       referenceUrl: !isRef ? s.url : undefined
     };
 
@@ -88,9 +90,10 @@ if (data) {
   });
 }
 
+
 export const config: Config = {
   id: testSuite,
-  viewports: parseDataFromFile(data?.viewportsPath ?? 'data/_viewports.yaml') as ViewportNext[],
+  viewports,
   onBeforeScript: getScriptPath("/onBefore.js", engine),
   onReadyScript: getScriptPath("/onReady.js", engine),
   scenarios,
