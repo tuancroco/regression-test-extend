@@ -81,7 +81,7 @@ module.exports = async (page, scenario) => {
 
       await page.waitForSelector(action.select);
 
-      let el = await page.locator(action.hide);
+      let el = await page.locator(action.select);
       if (!!action.value) {
         await el.selectOption(action.value);
       } else if (!!action.label) {

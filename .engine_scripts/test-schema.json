@@ -142,6 +142,12 @@
                 "$ref": "#/definitions/ScrollAction"
               },
               {
+                "$ref": "#/definitions/SelectByLabelAction"
+              },
+              {
+                "$ref": "#/definitions/SelectByValueAction"
+              },
+              {
                 "$ref": "#/definitions/WaitAction"
               }
             ]
@@ -243,6 +249,58 @@
       },
       "required": [
         "scroll"
+      ]
+    },
+    "SelectByValueAction": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "select": {
+          "type": "string"
+        },
+        "value": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ]
+        }
+      },
+      "required": [
+        "select",
+        "value"
+      ]
+    },
+    "SelectByLabelAction": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "select": {
+          "type": "string"
+        },
+        "label": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ]
+        }
+      },
+      "required": [
+        "select",
+        "label"
       ]
     },
     "WaitAction": {
