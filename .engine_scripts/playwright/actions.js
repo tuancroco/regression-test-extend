@@ -10,6 +10,12 @@ module.exports = async (page, scenario) => {
       continue;
     }
 
+    if (!!action.check) {
+      console.log('check:', action.check);
+      await page.waitForSelector(action.check);
+      await page.check(action.check);
+    }
+
     if (!!action.click) {
       console.log('Click:', action.click);
       await page.waitForSelector(action.click);
@@ -87,6 +93,12 @@ module.exports = async (page, scenario) => {
       } else if (!!action.label) {
         el.selectOption({ label: action.label });
       }
+    }
+
+    if (!!action.uncheck) {
+      console.log('uncheck:', action.uncheck);
+      await page.waitForSelector(action.uncheck);
+      await page.uncheck(action.uncheck);
     }
 
     if (!!action.wait) {
