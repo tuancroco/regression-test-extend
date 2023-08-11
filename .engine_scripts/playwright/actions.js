@@ -68,7 +68,6 @@ module.exports = async (page, scenario) => {
         const files = typeof action.file === 'string' ? [action.file] : action.file;
         let normalizedPaths = [];
 
-        console.log(files);
         files.forEach((file) => {
           if (path.isAbsolute(file)) {
             throw '`file` must be relative path to "data" folder';
