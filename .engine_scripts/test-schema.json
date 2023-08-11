@@ -121,6 +121,9 @@
           "items": {
             "oneOf": [
               {
+                "$ref": "#/definitions/CheckAction"
+              },
+              {
                 "$ref": "#/definitions/ClickAction"
               },
               {
@@ -148,6 +151,9 @@
                 "$ref": "#/definitions/SelectByValueAction"
               },
               {
+                "$ref": "#/definitions/UncheckAction"
+              },
+              {
                 "$ref": "#/definitions/WaitAction"
               }
             ]
@@ -158,6 +164,15 @@
         "url"
       ],
       "title": "URL"
+    },
+    "CheckAction": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "check": {
+          "type": "string"
+        }
+      }
     },
     "ClickAction": {
       "type": "object",
@@ -302,6 +317,15 @@
         "select",
         "label"
       ]
+    },
+    "UncheckAction": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "uncheck": {
+          "type": "string"
+        }
+      }
     },
     "WaitAction": {
       "type": "object",
