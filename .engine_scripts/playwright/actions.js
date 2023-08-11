@@ -1,3 +1,6 @@
+const fs = require('fs');
+const path = require('path');
+
 module.exports = async (page, scenario) => {
   if (!scenario.actions) {
     return;
@@ -43,15 +46,51 @@ module.exports = async (page, scenario) => {
     }
 
     if (!!action.input) {
-      console.log('Input:', action.input, action.value);
-      await page.waitForSelector(action.input);
-      let el = await page.locator(action.input);
-
-      if (!action.append) {
-        await el.evaluate((node) => (node.value = ''));
+      if (typeof action.value != 'undefined' && !!action.file) {
+        throw '`input` action must not contains both `value` and `file`';
       }
 
-      await el.type(action.value);
+      if (typeof action.value != 'undefined') {
+        console.log('Input:', action.input, action.value);
+        await page.waitForSelector(action.input);
+        let el = await page.locator(action.input);
+
+        if (!action.append) {
+          await el.evaluate((node) => (node.value = ''));
+        }
+
+        await el.type(action.value);
+      } else if (!!action.file) {
+        console.log('Input:', action.input, action.file);
+        await page.waitForSelector(action.input);
+        let el = await page.locator(action.input);
+
+        const files = typeof action.file === 'string' ? [action.file] : action.file;
+        let normalizedPaths = [];
+
+        console.log(files);
+        files.forEach((file) => {
+          if (path.isAbsolute(file)) {
+            throw '`file` must be relative path to "data" folder';
+          }
+
+          const filePath = path.join('./data', file);
+          if (!fs.existsSync(filePath)) {
+            throw `file does not exist: ${file}`;
+          }
+
+          normalizedPaths.push(filePath);
+        });
+
+        if (action.useFileChooser) {
+          const fileChooserPromise = page.waitForEvent('filechooser');
+          el.click();
+          const fileChooser = await fileChooserPromise;
+          await fileChooser.setFiles(normalizedPaths);
+        } else {
+          el.setInputFiles(normalizedPaths);
+        }
+      }
     }
 
     if (!!action.remove) {

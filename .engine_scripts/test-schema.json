@@ -136,6 +136,9 @@
                 "$ref": "#/definitions/InputAction"
               },
               {
+                "$ref": "#/definitions/InputFileAction"
+              },
+              {
                 "$ref": "#/definitions/PressAction"
               },
               {
@@ -224,6 +227,35 @@
       "required": [
         "input",
         "value"
+      ]
+    },
+    "InputFileAction": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "input": {
+          "type": "string"
+        },
+        "file": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ]
+        },
+        "useFileChooser": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "input",
+        "file"
       ]
     },
     "PressAction": {

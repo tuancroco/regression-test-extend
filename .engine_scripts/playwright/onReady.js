@@ -1,5 +1,6 @@
 const fs = require('fs');
 const autoScroll = require('../auto-scroll');
+const scrollTop = require('../scroll-top');
 
 module.exports = async (page, scenario, viewport, isReference, browserContext) => {
   console.log('SCENARIO > ' + scenario.label);
@@ -26,6 +27,8 @@ module.exports = async (page, scenario, viewport, isReference, browserContext) =
   } else {
     await require('./clickAndHoverHelper')(page, scenario);
   }
+
+  await page.evaluate(scrollTop);
 
   // add more ready handlers here...
   // await page.waitForLoadState('load', { timeout: 5000 });
