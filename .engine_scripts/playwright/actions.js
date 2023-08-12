@@ -53,13 +53,14 @@ module.exports = async (page, scenario) => {
       if (typeof action.value != 'undefined') {
         console.log('Input:', action.input, action.value);
         await page.waitForSelector(action.input);
+        await page.click(action.input);
         let el = await page.locator(action.input);
 
         if (!action.append) {
           await el.evaluate((node) => (node.value = ''));
         }
 
-        await el.type(action.value);
+        await el.fill(action.value);
       } else if (!!action.file) {
         console.log('Input:', action.input, action.file);
         await page.waitForSelector(action.input);
