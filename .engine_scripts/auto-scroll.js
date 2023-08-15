@@ -4,7 +4,7 @@ module.exports = async () => {
   const scrollToBottom = async () => {
     await new Promise((resolve) => {
       const timer = setInterval(() => {
-        if ((window.innerHeight + Math.ceil(window.scrollY)) >= document.body.offsetHeight) {
+        if (window.innerHeight + Math.ceil(window.scrollY) >= document.body.offsetHeight) {
           // you're at the bottom of the page
           clearInterval(timer);
           resolve();
@@ -14,7 +14,7 @@ module.exports = async () => {
         window.scrollBy(0, SCROLL_DISTANCE);
       }, 100);
     });
-  }
+  };
 
   const scrollToTop = async () => {
     await new Promise((resolve) => {
@@ -28,7 +28,7 @@ module.exports = async () => {
         window.scrollTo(0, 0);
       }, 100);
     });
-  }
+  };
 
   await scrollToBottom();
   await scrollToTop();
