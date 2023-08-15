@@ -1,7 +1,3 @@
 (() => {
-  Cookiebot && Cookiebot.hide();
-
-  window.addEventListener('CookiebotOnDialogDisplay', () => {
-    Cookiebot.hide();
-  });
+  // Put your script
 })();

@@ -17,6 +17,8 @@ module.exports = async (page, scenario, viewport, isReference, browserContext) =
     await require('./clickAndHoverHelper')(page, scenario);
   }
 
+  await page.evaluate(scrollTop);
+
   // add more ready handlers here...
   // await page.waitForLoadState('load', { timeout: 5000 });
 };
