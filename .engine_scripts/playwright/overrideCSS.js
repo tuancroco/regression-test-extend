@@ -28,7 +28,7 @@ module.exports = async (page, scenario) => {
 
   // inject arbitrary css to override styles
   await page.addStyleTag({
-    path: cssOverridePath
+    path: cssOverridePath,
   });
 
   console.log('BACKSTOP_TEST_CSS_OVERRIDE injected for: ' + scenario.label);

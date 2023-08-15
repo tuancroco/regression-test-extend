@@ -1,0 +1,7 @@
+#CybotCookiebotDialog,
+#CybotCookiebotDialogFooter,
+#CybotCookiebotDialogBodyButtonsWrapper,
+.CybotCookiebotDialogContentWrapper,
+.CybotCookiebotDialogActive {
+  display: none !important;
+}
