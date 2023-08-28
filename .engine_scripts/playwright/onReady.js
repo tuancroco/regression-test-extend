@@ -1,4 +1,5 @@
 const autoScroll = require('../auto-scroll');
+const scrollTop = require('../scroll-top');
 
 module.exports = async (page, scenario, viewport, isReference, browserContext) => {
   await require('./embedFiles')(scenario, page);
