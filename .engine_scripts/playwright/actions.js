@@ -142,15 +142,13 @@ module.exports = async (page, scenario) => {
 
     if (!!action.wait) {
       console.log('Wait:', action.wait);
+      if (!!action.url) {
+        await page.waitForURL(action.url);
+      }
+
       if (parseInt(action.wait) > 0) {
-        if (!!action.url) {
-          await page.waitForURL(action.url);
-        }
         await page.waitForTimeout(action.wait);
       } else {
-        if (!!action.url) {
-          await page.waitForURL(action.url);
-        }
         await page.waitForSelector(action.wait);
       }
     }
