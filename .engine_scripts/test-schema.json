@@ -35,6 +35,9 @@
           "items": {
             "$ref": "#/definitions/URL"
           }
+        },
+        "debug": {
+          "type": "boolean"
         }
       },
       "required": [

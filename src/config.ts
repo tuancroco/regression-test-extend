@@ -120,7 +120,7 @@ export const config: Config = {
   asyncCaptureLimit: 5,
   asyncCompareLimit: 50,
   debug: false,
-  debugWindow: false
+  debugWindow: data?.debug
 };
 
 export default config;

@@ -13,6 +13,7 @@ export interface TestSuiteModel {
   useCssOverride?: boolean;
   cssOverridePath?: string;
   viewportsPath?: string;
+  debug?: boolean;
 }
 
 export interface ScenarioModel extends Scenario {
