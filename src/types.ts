@@ -27,4 +27,5 @@ export interface ScenarioModel extends Scenario {
   total: number;
   viewportNames?: string[];
   useCssOverride?: boolean;
+  noScrollTop?: boolean;
 }

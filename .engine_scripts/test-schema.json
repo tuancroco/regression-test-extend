@@ -135,6 +135,9 @@
             }
           ]
         },
+        "noScrollTop": {
+          "type": "boolean"
+        },
         "actions": {
           "type": "array",
           "items": {
