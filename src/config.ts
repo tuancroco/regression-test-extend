@@ -18,13 +18,13 @@ const isRef = getFlagArg('--ref');
 
 const scenarios: Scenario[] = [];
 
-const getTestUrl = (url: string, env: ReplacementModel[] | undefined) => {
-  if (isRef || !env) {
+const getTestUrl = (url: string, urlReplacements: ReplacementModel[] | undefined) => {
+  if (isRef || !urlReplacements) {
     return url;
   }
 
   let testUrl = url;
-  env.forEach(e => testUrl = testUrl.replace(e.ref, e.test));
+  urlReplacements.forEach(e => testUrl = testUrl.replace(e.ref, e.test));
 
   return testUrl;
 }
@@ -112,7 +112,7 @@ if (data) {
   data.scenarios.forEach((s, index) => {
     const opts: ScenarioModel = {
       ...s,
-      url: isRef ? s.url : getTestUrl(s.url, data.env),
+      url: isRef ? s.url : getTestUrl(s.url, data.urlReplacements),
       index,
       total: data.scenarios.length,
       delay: s.delay ?? 1000,

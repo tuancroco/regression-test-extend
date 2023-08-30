@@ -6,7 +6,7 @@ export interface ReplacementModel {
 }
 
 export interface TestSuiteModel {
-  env?: ReplacementModel[];
+  urlReplacements?: ReplacementModel[];
   scenarios: ScenarioModel[];
   hideSelectors?: string[];
   removeSelectors?: string[];

@@ -9,10 +9,10 @@
         "useCssOverride": {
           "type": "boolean"
         },
-        "env": {
+        "urlReplacements": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/Env"
+            "$ref": "#/definitions/UrlReplacements"
           }
         },
         "cssOverridePath": {
@@ -45,7 +45,7 @@
       ],
       "title": "TestSuite"
     },
-    "Env": {
+    "UrlReplacements": {
       "type": "object",
       "additionalProperties": false,
       "properties": {
@@ -68,7 +68,7 @@
         "ref",
         "test"
       ],
-      "title": "Env"
+      "title": "URL Replacements"
     },
     "URL": {
       "type": "object",
