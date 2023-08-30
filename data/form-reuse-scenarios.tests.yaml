@@ -11,12 +11,13 @@ scenarios:
       - input: '#signup #email'
         value: test@gmail.com
 
-  # Input the form with password, but not submit it
+  # Input the form with username, email and password, but not submit it
   - url: https://www.tuyen.xyz/optimizely-cms/testing/form-submission-test-sample/
     label: Input the form with valid password
     viewportNames:
       - desktop
     id: valid-data-2
+    # Executing all the actions from above scenario before executing the actions from this scenario
     needs: valid-data-1
     actions:
       - input: '#signup #password'
@@ -29,6 +30,7 @@ scenarios:
     viewportNames:
       - desktop
     needs:
+      # Executing all the actions from the scenarios `valid-data-1` and `valid-data-2` before executing the actions from this scenario
       - valid-data-2
     actions:
       - click: '#signup input[type="submit"]'
