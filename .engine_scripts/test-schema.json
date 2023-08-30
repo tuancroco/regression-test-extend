@@ -119,6 +119,22 @@
             "type": "string"
           }
         },
+        "id": {
+          "type": "string"
+        },
+        "needs": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ]
+        },
         "actions": {
           "type": "array",
           "items": {

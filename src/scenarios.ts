@@ -20,4 +20,4 @@ export const createScenario = (opts: ScenarioModel): ScenarioModel => {
     misMatchThreshold: 0.1,
     requireSameDimensions: true
   }
-}
+};

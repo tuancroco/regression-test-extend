@@ -67,9 +67,48 @@ const getData = (testSuite: String): TestSuiteModel | undefined => {
   }
 }
 
+const expandScenarios = (model: ScenarioModel, scenarios: ScenarioModel[], level: number) => {
+  if (level > 100) {
+    throw "Level is too large";
+  }
+
+  if (!model.needs) {
+    return;
+  }
+
+  const neededActions: string[] = [];
+  if (typeof model.needs === 'string') {
+    neededActions.push(model.needs);
+  } else {
+    model.needs.forEach(n => neededActions.push(n));
+  }
+
+  neededActions.reverse().forEach((n) => {
+    const targetScenarios = scenarios.filter(s => !!s.id && s.id.toLowerCase() == n.toLowerCase());
+    if (targetScenarios.length !== 1) {
+      throw `The test suite must contains exactly ONE scenario with id: ${n}`;
+    }
+
+    var targetScenario = targetScenarios[0];
+    expandScenarios(targetScenario, scenarios, level + 1);
+    if (!!targetScenario.actions) {
+      if (!model.actions) {
+        model.actions = [];
+      }
+      model.actions = [...targetScenario.actions, ...model.actions];
+    }
+  });
+
+  model.needs = undefined;
+}
+
 const data = getData(testSuite);
 const viewports = parseDataFromFile(data?.viewportsPath ?? 'data/_viewports.yaml') as ViewportNext[];
 if (data) {
+  [].forEach.call(data.scenarios, (s: ScenarioModel) => {
+    expandScenarios(s, data.scenarios, 0);
+  });
+
   data.scenarios.forEach((s, index) => {
     const opts: ScenarioModel = {
       ...s,

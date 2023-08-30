@@ -17,6 +17,9 @@ export interface TestSuiteModel {
 }
 
 export interface ScenarioModel extends Scenario {
+  id?: string;
+  needs?: string | string[];
+  actions?: unknown[];
   description: string;
   cssOverridePath?: string;
   index: number;
