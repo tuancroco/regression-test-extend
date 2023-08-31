@@ -34,4 +34,5 @@ scenarios:
       - valid-data-2
     actions:
       - click: '#signup input[type="submit"]'
-      - wait: 2000
+      - wait: 5000
+        url: '**/?action=signup'
