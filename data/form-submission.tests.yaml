@@ -18,7 +18,8 @@ scenarios:
       - input: '#signup #confirm-password'
         value: kCzs0!!kP^jIXamK}g@e
       - click: '#signup input[type="submit"]'
-      - wait: 2000
+      - wait: 5000
+        url: '**/?action=signup'
 
   # Scenario:
   # Testing the form when clic submit without input any data
