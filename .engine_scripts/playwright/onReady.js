@@ -6,8 +6,12 @@ module.exports = async (page, scenario, viewport, isReference, browserContext) =
   await page.evaluate(autoScroll);
 
   page.on('load', async (data) => {
-    await require('./embedFiles')(scenario, data);
-    await data.evaluate(require('../auto-scroll'));
+    try {
+      await require('./embedFiles')(scenario, data);
+      await data.evaluate(require('../auto-scroll'));
+    } catch (error) {
+      console.log(error);
+    }
   });
 
   console.log('SCENARIO > ' + scenario.label);
