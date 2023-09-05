@@ -17,6 +17,8 @@ export interface TestSuiteModel {
   asyncCaptureLimit?: number;
   asyncCompareLimit?: number;
   browser?: 'chromium' | 'firefox' | 'webkit';
+  misMatchThreshold?: number;
+  postInteractionWait?: number;
 }
 
 export interface ScenarioModel extends Scenario {
@@ -31,4 +33,6 @@ export interface ScenarioModel extends Scenario {
   viewportNames?: string[];
   useCssOverride?: boolean;
   noScrollTop?: boolean;
+  misMatchThreshold?: number;
+  postInteractionWait?: number;
 }

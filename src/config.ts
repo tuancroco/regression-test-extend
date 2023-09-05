@@ -121,6 +121,8 @@ if (data) {
       jsOnReadyPath: s.jsOnReadyPath,
       viewports: s.viewportNames ? viewports.filter((v) => s.viewportNames?.includes(v.label)) : undefined,
       referenceUrl: !isRef ? s.url : undefined,
+      misMatchThreshold: s.misMatchThreshold ?? data.misMatchThreshold ?? 0.1,
+      postInteractionWait: s.postInteractionWait ?? data.postInteractionWait ?? 1,
     };
 
     const scenario = createScenario(opts);

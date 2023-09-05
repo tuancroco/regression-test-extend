@@ -25,6 +25,11 @@ module.exports = async (page, scenario, viewport, isReference, browserContext) =
   if (!scenario.noScrollTop) {
     await page.evaluate(scrollTop);
   }
+
   // add more ready handlers here...
   // await page.waitForLoadState('load', { timeout: 5000 });
+
+  if (scenario.postInteractionWait) {
+    await page.waitForTimeout(scenario.postInteractionWait);
+  }
 };

@@ -56,6 +56,12 @@
               ]
             }
           ]
+        },
+        "misMatchThreshold": {
+          "type": "number"
+        },
+        "postInteractionWait": {
+          "type": "number"
         }
       },
       "required": [
@@ -201,6 +207,12 @@
               }
             ]
           }
+        },
+        "misMatchThreshold": {
+          "type": "number"
+        },
+        "postInteractionWait": {
+          "type": "number"
         }
       },
       "required": [

@@ -1,4 +1,4 @@
-import { ScenarioModel } from "./types";
+import { ScenarioModel } from './types';
 
 export const createScenario = (opts: ScenarioModel): ScenarioModel => {
   const parsedUrl = new URL(opts.url);
@@ -13,11 +13,9 @@ export const createScenario = (opts: ScenarioModel): ScenarioModel => {
     readyEvent: '',
     hideSelectors: opts.hideSelectors ?? [],
     removeSelectors: opts.removeSelectors ?? [],
-    postInteractionWait: 0,
     selectors: [],
     selectorExpansion: true,
     expect: 0,
-    misMatchThreshold: 0.1,
-    requireSameDimensions: true
-  }
+    requireSameDimensions: true,
+  };
 };
