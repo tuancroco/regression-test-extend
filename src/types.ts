@@ -1,4 +1,4 @@
-import { Scenario } from "backstopjs";
+import { Scenario } from 'backstopjs';
 
 export interface ReplacementModel {
   ref: string;
@@ -14,6 +14,9 @@ export interface TestSuiteModel {
   cssOverridePath?: string;
   viewportsPath?: string;
   debug?: boolean;
+  asyncCaptureLimit?: number;
+  asyncCompareLimit?: number;
+  browser?: 'chromium' | 'firefox' | 'webkit';
 }
 
 export interface ScenarioModel extends Scenario {

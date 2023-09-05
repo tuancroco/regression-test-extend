@@ -10,7 +10,6 @@ import { exit } from 'process';
 import YAML from 'js-yaml';
 
 const engine: 'puppeteer' | 'playwright' = 'playwright';
-const browser: 'chromium' | 'firefox' | 'webkit' = 'chromium';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const testSuite = getStringArg('--test-suite');
@@ -24,14 +23,14 @@ const getTestUrl = (url: string, urlReplacements: ReplacementModel[] | undefined
   }
 
   let testUrl = url;
-  urlReplacements.forEach(e => testUrl = testUrl.replace(e.ref, e.test));
+  urlReplacements.forEach((e) => (testUrl = testUrl.replace(e.ref, e.test)));
 
   return testUrl;
-}
+};
 
 const getScriptPath = (path: string, engine: 'puppeteer' | 'playwright') => {
   return (engine == 'puppeteer' ? 'puppet' : 'playwright') + path;
-}
+};
 
 if (!testSuite) {
   console.log(chalk.red('Argument `--test-suite` must be set.'));
@@ -41,19 +40,19 @@ if (!testSuite) {
 }
 
 const getData = (testSuite: String): TestSuiteModel | undefined => {
-  let extensions: { ext: string, parse: (content: string) => unknown }[] = [
+  let extensions: { ext: string; parse: (content: string) => unknown }[] = [
     {
       ext: 'yaml',
-      parse: YAML.load
+      parse: YAML.load,
     },
     {
       ext: 'yaml',
-      parse: YAML.load
+      parse: YAML.load,
     },
     {
       ext: 'json',
-      parse: JSON.parse
-    }
+      parse: JSON.parse,
+    },
   ];
 
   for (let i = 0; i < extensions.length; i++) {
@@ -63,13 +62,13 @@ const getData = (testSuite: String): TestSuiteModel | undefined => {
       console.log('Data path: ', dataPath);
       const content = fs.readFileSync(dataPath, 'utf-8');
       return extensions[i].parse(content) as TestSuiteModel;
-    };
+    }
   }
-}
+};
 
 const expandScenarios = (model: ScenarioModel, scenarios: ScenarioModel[], level: number) => {
   if (level > 100) {
-    throw "Level is too large";
+    throw 'Level is too large';
   }
 
   if (!model.needs) {
@@ -80,11 +79,11 @@ const expandScenarios = (model: ScenarioModel, scenarios: ScenarioModel[], level
   if (typeof model.needs === 'string') {
     neededActions.push(model.needs);
   } else {
-    model.needs.forEach(n => neededActions.push(n));
+    model.needs.forEach((n) => neededActions.push(n));
   }
 
   neededActions.reverse().forEach((n) => {
-    const targetScenarios = scenarios.filter(s => !!s.id && s.id.toLowerCase() == n.toLowerCase());
+    const targetScenarios = scenarios.filter((s) => !!s.id && s.id.toLowerCase() == n.toLowerCase());
     if (targetScenarios.length !== 1) {
       throw `The test suite must contains exactly ONE scenario with id: ${n}`;
     }
@@ -100,7 +99,7 @@ const expandScenarios = (model: ScenarioModel, scenarios: ScenarioModel[], level
   });
 
   model.needs = undefined;
-}
+};
 
 const data = getData(testSuite);
 const viewports = parseDataFromFile(data?.viewportsPath ?? 'data/_viewports.yaml') as ViewportNext[];
@@ -120,8 +119,8 @@ if (data) {
       removeSelectors: s.removeSelectors ?? data.removeSelectors,
       useCssOverride: s.useCssOverride ?? data.useCssOverride,
       jsOnReadyPath: s.jsOnReadyPath,
-      viewports: s.viewportNames ? viewports.filter(v => s.viewportNames?.includes(v.label)) : undefined,
-      referenceUrl: !isRef ? s.url : undefined
+      viewports: s.viewportNames ? viewports.filter((v) => s.viewportNames?.includes(v.label)) : undefined,
+      referenceUrl: !isRef ? s.url : undefined,
     };
 
     const scenario = createScenario(opts);
@@ -129,19 +128,18 @@ if (data) {
   });
 }
 
-
 export const config: Config = {
   id: testSuite,
   viewports,
-  onBeforeScript: getScriptPath("/onBefore.js", engine),
-  onReadyScript: getScriptPath("/onReady.js", engine),
+  onBeforeScript: getScriptPath('/onBefore.js', engine),
+  onReadyScript: getScriptPath('/onReady.js', engine),
   scenarios,
   paths: {
-    bitmaps_reference: ".backstop/" + testSuite + "/bitmaps_reference",
-    bitmaps_test: ".backstop/" + testSuite + "/bitmaps_test",
-    engine_scripts: ".engine_scripts",
-    html_report: ".backstop/" + testSuite + "/html_report",
-    ci_report: ".backstop/" + testSuite + "/ci_report"
+    bitmaps_reference: '.backstop/' + testSuite + '/bitmaps_reference',
+    bitmaps_test: '.backstop/' + testSuite + '/bitmaps_test',
+    engine_scripts: '.engine_scripts',
+    html_report: '.backstop/' + testSuite + '/html_report',
+    ci_report: '.backstop/' + testSuite + '/ci_report',
   },
   report: [isRef ? 'CI' : 'browser'],
   engine,
@@ -154,12 +152,12 @@ export const config: Config = {
       '--no-sandbox',
       '--window-position=0,0',
     ],
-    browser
+    browser: data?.browser ?? 'chromium',
   },
-  asyncCaptureLimit: 5,
-  asyncCompareLimit: 50,
+  asyncCaptureLimit: data?.asyncCaptureLimit ?? 5,
+  asyncCompareLimit: data?.asyncCompareLimit ?? 50,
   debug: false,
-  debugWindow: data?.debug
+  debugWindow: data?.debug,
 };
 
 export default config;

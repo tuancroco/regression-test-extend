@@ -38,6 +38,24 @@
         },
         "debug": {
           "type": "boolean"
+        },
+        "asyncCaptureLimit": {
+          "type": "number"
+        },
+        "asyncCompareLimit": {
+          "type": "number"
+        },
+        "browser": {
+          "type": "string",
+          "oneOf": [
+            {
+              "enum": [
+                "chromium",
+                "firefox",
+                "webkit"
+              ]
+            }
+          ]
         }
       },
       "required": [
