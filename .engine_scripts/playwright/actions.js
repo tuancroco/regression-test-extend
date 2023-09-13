@@ -1,16 +1,26 @@
 const fs = require('fs');
 const path = require('path');
 
-module.exports = async (page, scenario) => {
+module.exports = async (currentPage, scenario) => {
   if (!scenario.actions) {
     return;
   }
 
   for (let i = 0; i < scenario.actions.length; i++) {
+    let page = currentPage;
     let action = scenario.actions[i];
 
     if (!action) {
       continue;
+    }
+
+    if (!!action.frame) {
+      const frames = typeof action.frame === 'string' ? [action.frame] : action.frame;
+      for (let j = 0; j < frames.length; j++) {
+        await page.waitForSelector(frames[j]);
+        const handle = await page.locator(frames[j]).elementHandle();
+        page = await handle.contentFrame();
+      }
     }
 
     if (!!action.check) {

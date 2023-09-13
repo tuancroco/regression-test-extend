@@ -49,11 +49,7 @@
           "type": "string",
           "oneOf": [
             {
-              "enum": [
-                "chromium",
-                "firefox",
-                "webkit"
-              ]
+              "enum": ["chromium", "firefox", "webkit"]
             }
           ]
         },
@@ -64,9 +60,7 @@
           "type": "number"
         }
       },
-      "required": [
-        "scenarios"
-      ],
+      "required": ["scenarios"],
       "title": "TestSuite"
     },
     "UrlReplacements": {
@@ -76,22 +70,15 @@
         "ref": {
           "type": "string",
           "format": "uri",
-          "qt-uri-protocols": [
-            "https"
-          ]
+          "qt-uri-protocols": ["https"]
         },
         "test": {
           "type": "string",
           "format": "uri",
-          "qt-uri-protocols": [
-            "https"
-          ]
+          "qt-uri-protocols": ["https"]
         }
       },
-      "required": [
-        "ref",
-        "test"
-      ],
+      "required": ["ref", "test"],
       "title": "URL Replacements"
     },
     "URL": {
@@ -215,9 +202,7 @@
           "type": "number"
         }
       },
-      "required": [
-        "url"
-      ],
+      "required": ["url"],
       "title": "URL"
     },
     "CheckAction": {
@@ -226,6 +211,19 @@
       "properties": {
         "check": {
           "type": "string"
+        },
+        "frame": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ]
         }
       }
     },
@@ -235,6 +233,19 @@
       "properties": {
         "click": {
           "type": "string"
+        },
+        "frame": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ]
         }
       }
     },
@@ -244,11 +255,22 @@
       "properties": {
         "hide": {
           "type": "string"
+        },
+        "frame": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ]
         }
       },
-      "required": [
-        "hide"
-      ]
+      "required": ["hide"]
     },
     "HoverAction": {
       "type": "object",
@@ -256,11 +278,22 @@
       "properties": {
         "hover": {
           "type": "string"
+        },
+        "frame": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ]
         }
       },
-      "required": [
-        "hover"
-      ]
+      "required": ["hover"]
     },
     "InputAction": {
       "type": "object",
@@ -274,12 +307,22 @@
         },
         "append": {
           "type": "boolean"
+        },
+        "frame": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ]
         }
       },
-      "required": [
-        "input",
-        "value"
-      ]
+      "required": ["input", "value"]
     },
     "InputFileAction": {
       "type": "object",
@@ -303,12 +346,22 @@
         },
         "useFileChooser": {
           "type": "boolean"
+        },
+        "frame": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ]
         }
       },
-      "required": [
-        "input",
-        "file"
-      ]
+      "required": ["input", "file"]
     },
     "PressAction": {
       "type": "object",
@@ -319,12 +372,22 @@
         },
         "key": {
           "type": "string"
+        },
+        "frame": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ]
         }
       },
-      "required": [
-        "press",
-        "key"
-      ]
+      "required": ["press", "key"]
     },
     "RemoveAction": {
       "type": "object",
@@ -332,11 +395,22 @@
       "properties": {
         "remove": {
           "type": "string"
+        },
+        "frame": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ]
         }
       },
-      "required": [
-        "remove"
-      ]
+      "required": ["remove"]
     },
     "ScrollAction": {
       "type": "object",
@@ -344,11 +418,22 @@
       "properties": {
         "scroll": {
           "type": "string"
+        },
+        "frame": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ]
         }
       },
-      "required": [
-        "scroll"
-      ]
+      "required": ["scroll"]
     },
     "SelectByValueAction": {
       "type": "object",
@@ -369,12 +454,22 @@
               }
             }
           ]
+        },
+        "frame": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ]
         }
       },
-      "required": [
-        "select",
-        "value"
-      ]
+      "required": ["select", "value"]
     },
     "SelectByLabelAction": {
       "type": "object",
@@ -395,12 +490,22 @@
               }
             }
           ]
+        },
+        "frame": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ]
         }
       },
-      "required": [
-        "select",
-        "label"
-      ]
+      "required": ["select", "label"]
     },
     "UncheckAction": {
       "type": "object",
@@ -408,6 +513,19 @@
       "properties": {
         "uncheck": {
           "type": "string"
+        },
+        "frame": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ]
         }
       }
     },
@@ -427,11 +545,22 @@
         },
         "url": {
           "type": "string"
+        },
+        "frame": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ]
         }
       },
-      "required": [
-        "wait"
-      ]
+      "required": ["wait"]
     }
   }
 }
