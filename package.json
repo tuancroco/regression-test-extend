@@ -14,7 +14,7 @@
   "devDependencies": {
     "@types/backstopjs": "^6.1.0",
     "@types/js-yaml": "^4.0.5",
-    "@types/node": "^20.2.5",
+    "@types/node": "^20.8.9",
     "backstopjs": "^6.2.2",
     "chalk": "^5.2.0",
     "js-yaml": "^4.1.0",

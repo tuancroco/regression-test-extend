@@ -5,6 +5,10 @@ export interface ReplacementModel {
   test: string;
 }
 
+export interface ReplacementsModel {
+  profiles: { [name: string]: ReplacementModel[] };
+}
+
 export interface TestSuiteModel {
   urlReplacements?: ReplacementModel[];
   scenarios: ScenarioModel[];

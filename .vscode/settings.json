@@ -50,7 +50,8 @@
     }
   ],
   "yaml.schemas": {
-    "./.engine_scripts/test-schema.json": "/*.tests.{yaml,yml}"
+    "./.engine_scripts/test-schema.json": "/*.tests.{yaml,yml}",
+    "./.engine_scripts/replacement-profiles-schema.json": "/_replacement-profiles.{yaml,yml}"
   },
   "git.branchValidationRegex": "^(main|master|develop|stage|fe-develop|fe-release|(features|bugfixes|infra|refactor)\\/.+)$"
 }

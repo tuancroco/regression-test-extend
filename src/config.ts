@@ -4,10 +4,11 @@ import { createScenario } from './scenarios.js';
 import path from 'path';
 import { getFlagArg, getStringArg, parseDataFromFile } from './helpers.js';
 import { fileURLToPath } from 'url';
-import { TestSuiteModel, ReplacementModel, ScenarioModel } from './types.js';
+import { TestSuiteModel, ScenarioModel } from './types.js';
 import chalk from 'chalk';
 import { exit } from 'process';
 import YAML from 'js-yaml';
+import { getTestUrl } from './replacements.js';
 
 const engine: 'puppeteer' | 'playwright' = 'playwright';
 
@@ -16,17 +17,6 @@ const testSuite = getStringArg('--test-suite');
 const isRef = getFlagArg('--ref');
 
 const scenarios: Scenario[] = [];
-
-const getTestUrl = (url: string, urlReplacements: ReplacementModel[] | undefined) => {
-  if (isRef || !urlReplacements) {
-    return url;
-  }
-
-  let testUrl = url;
-  urlReplacements.forEach((e) => (testUrl = testUrl.replace(e.ref, e.test)));
-
-  return testUrl;
-};
 
 const getScriptPath = (path: string, engine: 'puppeteer' | 'playwright') => {
   return (engine == 'puppeteer' ? 'puppet' : 'playwright') + path;
@@ -111,7 +101,7 @@ if (data) {
   data.scenarios.forEach((s, index) => {
     const opts: ScenarioModel = {
       ...s,
-      url: isRef ? s.url : getTestUrl(s.url, data.urlReplacements),
+      url: isRef ? s.url : getTestUrl(s.url, isRef),
       index,
       total: data.scenarios.length,
       delay: s.delay ?? 1000,

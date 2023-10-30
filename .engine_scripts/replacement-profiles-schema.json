@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$ref": "#/definitions/Root",
+  "definitions": {
+    "Root": {
+      "type": "object",
+      "properties": {
+        "profiles": {
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/Replacement"
+            }
+          }
+        }
+      },
+      "required": ["profiles"]
+    },
+    "Replacement": {
+      "type": "object",
+      "properties": {
+        "ref": {
+          "type": "string"
+        },
+        "test": {
+          "type": "string"
+        }
+      },
+      "required": ["ref", "test"]
+    }
+  }
+}

@@ -1,0 +1,6 @@
+profiles:
+  default:
+    - ref: https://legacy1.domain.com/
+      test: https://new1.domain.com/
+    - ref: https://legacy2.domain.com/
+      test: https://new2.domain.com/
