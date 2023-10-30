@@ -18,3 +18,20 @@ Please check [Documentation](https://www.tuyen.xyz/optimizely-cms/testing/get-st
    ```
 
 1. Commit/Push the changes to the project's repository.
+
+## Compare between old and new environment
+
+1. Run below command:
+
+   ```powershell
+   $env:REPLACEMENT_PROFILE = 'default'
+   ```
+
+1. Execute your test suites as usual.  
+   The tests now run on old env with `ref` command and new env with `test` command`.
+
+1. When your tasks are finished, either close the terminal or run below command to reset the profile:
+
+   ```powershell
+   $env:REPLACEMENT_PROFILE = ''
+   ```
