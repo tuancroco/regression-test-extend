@@ -35,3 +35,19 @@ Please check [Documentation](https://www.tuyen.xyz/optimizely-cms/testing/get-st
    ```powershell
    $env:REPLACEMENT_PROFILE = ''
    ```
+
+## Use command aliases
+
+1. Run the following command:
+
+   ```powershell
+   . ./alias.ps1
+   ```
+
+1. Use new command aliases:
+
+   | Command                               | Alias 1 | Alias 2       |
+   | ------------------------------------- | ------- | ------------- |
+   | npm run ref -- --test-suite alloy     | r alloy | ref alloy     |
+   | npm run approve -- --test-suite alloy | a alloy | approve alloy |
+   | npm run ref -- --test-suite alloy     | t alloy | test alloy    |
