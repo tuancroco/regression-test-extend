@@ -98,9 +98,12 @@ if (data) {
     expandScenarios(s, data.scenarios, 0);
   });
 
+  const getTestUrlLocal = (url: string) => getTestUrl(url, isRef);
+
   data.scenarios.forEach((s, index) => {
     const opts: ScenarioModel = {
       ...s,
+      getTestUrl: getTestUrlLocal,
       url: isRef ? s.url : getTestUrl(s.url, isRef),
       index,
       total: data.scenarios.length,

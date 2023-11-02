@@ -152,8 +152,12 @@ module.exports = async (currentPage, scenario) => {
 
     if (!!action.wait) {
       console.log('Wait:', action.wait);
-      if (!!action.url) {
-        await page.waitForURL(action.url);
+      let url = action.url;
+      if (!!url) {
+        if (!!scenario.getTestUrl) {
+          url = scenario.getTestUrl(url);
+        }
+        await page.waitForURL(url);
       }
 
       if (parseInt(action.wait) > 0) {
