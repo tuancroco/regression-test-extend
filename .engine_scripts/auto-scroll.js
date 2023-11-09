@@ -2,11 +2,13 @@ module.exports = async () => {
   const SCROLL_DISTANCE = 100;
 
   const scrollToBottom = async () => {
+    window.visualTestScrollingBottom = true;
     await new Promise((resolve) => {
       const timer = setInterval(() => {
         if (window.innerHeight + Math.ceil(window.scrollY) >= document.body.offsetHeight) {
           // you're at the bottom of the page
           clearInterval(timer);
+          window.visualTestScrollingBottom = false;
           resolve();
           return;
         }
@@ -17,6 +19,15 @@ module.exports = async () => {
   };
 
   const scrollToTop = async () => {
+    await new Promise((resolve) => {
+      const timer = setInterval(() => {
+        if (!window.visualTestScrollingBottom) {
+          clearInterval(timer);
+          resolve();
+          return;
+        }
+      }, 100);
+    });
     await new Promise((resolve) => {
       const timer = setInterval(() => {
         if (window.scrollY === 0) {
