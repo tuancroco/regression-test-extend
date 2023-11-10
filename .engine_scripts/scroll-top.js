@@ -10,13 +10,15 @@ module.exports = async () => {
   });
 
   await new Promise((resolve) => {
+    let counter = 0;
     const timer = setInterval(() => {
-      if (window.scrollY === 0) {
+      if (window.scrollY === 0 || counter > 5) {
         clearInterval(timer);
         resolve();
         return;
       }
 
+      counter++;
       window.scrollTo(0, 0);
     }, 100);
   });
