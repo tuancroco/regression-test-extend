@@ -31,7 +31,7 @@ export interface ScenarioModel extends Scenario {
   actions?: unknown[];
   description: string;
   cssOverridePath?: string;
-  index: number;
+  index: string;
   jsOnReadyPath?: string;
   total: number;
   viewportNames?: string[];

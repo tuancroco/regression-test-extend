@@ -100,12 +100,13 @@ if (data) {
 
   const getTestUrlLocal = (url: string) => getTestUrl(url, isRef);
 
+  const pad = String(data?.scenarios.length).length;
   data.scenarios.forEach((s, index) => {
     const opts: ScenarioModel = {
       ...s,
       getTestUrl: getTestUrlLocal,
       url: isRef ? s.url : getTestUrl(s.url, isRef),
-      index: index + 1,
+      index: String(index + 1).padStart(pad, ' '),
       total: data.scenarios.length,
       delay: s.delay ?? 1000,
       hideSelectors: s.hideSelectors ?? data.hideSelectors,
