@@ -5,7 +5,7 @@ export const createScenario = (opts: ScenarioModel): ScenarioModel => {
 
   return {
     ...opts,
-    label: opts.label ?? `${opts.index + 1} of ${opts.total}: ${parsedUrl.pathname}`,
+    label: opts.label ?? `${opts.index} of ${opts.total}: ${parsedUrl.pathname}`,
     cookiePath: opts.cookiePath ?? 'data/_cookies.yaml',
     cssOverridePath: opts.cssOverridePath ?? 'data/_override.css',
     jsOnReadyPath: opts.jsOnReadyPath ?? 'data/_on-ready.js',

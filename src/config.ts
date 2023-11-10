@@ -105,7 +105,7 @@ if (data) {
       ...s,
       getTestUrl: getTestUrlLocal,
       url: isRef ? s.url : getTestUrl(s.url, isRef),
-      index,
+      index: index + 1,
       total: data.scenarios.length,
       delay: s.delay ?? 1000,
       hideSelectors: s.hideSelectors ?? data.hideSelectors,
