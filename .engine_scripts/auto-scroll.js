@@ -3,6 +3,10 @@ module.exports = async () => {
   const SCROLL_DOWN_MAX = 100;
   const SCROLL_TOP_MAX = 100;
 
+  if (!!window.visualTestScrollingBottom) {
+    return;
+  }
+
   const scrollToBottom = async () => {
     window.visualTestScrollingBottom = true;
     let counter = 0;
