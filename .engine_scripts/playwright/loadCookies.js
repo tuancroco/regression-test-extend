@@ -1,9 +1,12 @@
 const fs = require('fs');
 const YAML = require('js-yaml');
+const chalkImport = import('chalk').then((m) => m.default);
 
 module.exports = async (browserContext, scenario) => {
   let cookies = [];
   const cookiePath = scenario.cookiePath;
+  const chalk = await chalkImport;
+  const logPrefix = chalk.yellow(`[${scenario.index} of ${scenario.total}] `);
 
   // Read Cookies from File, if exists
   if (!!cookiePath && fs.existsSync(cookiePath)) {
@@ -19,5 +22,5 @@ module.exports = async (browserContext, scenario) => {
   browserContext.addCookies(cookies);
 
   // console.log('Cookie state restored with:', JSON.stringify(cookies, null, 2));
-  console.log('Cookie state restored for: ' + scenario.label);
+  console.log(logPrefix + 'Cookie state restored for: ' + scenario.label);
 };

@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const chalkImport = import('chalk').then((m) => m.default);
 
 /**
  * OVERRIDE CSS
@@ -16,11 +17,13 @@ const path = require('path');
 
 module.exports = async (page, scenario) => {
   const cssOverridePath = scenario.cssOverridePath;
+  const chalk = await chalkImport;
+  const logPrefix = chalk.yellow(`[${scenario.index} of ${scenario.total}] `);
 
   if (!cssOverridePath) {
     return;
   } else if (!fs.existsSync(cssOverridePath)) {
-    console.log('File not exist: ' + cssOverridePath);
+    console.log(logPrefix + 'File not exist: ' + cssOverridePath);
     return;
   }
 
@@ -31,6 +34,6 @@ module.exports = async (page, scenario) => {
     path: cssOverridePath,
   });
 
-  console.log('BACKSTOP_TEST_CSS_OVERRIDE injected for: ' + scenario.label);
+  console.log(logPrefix + 'BACKSTOP_TEST_CSS_OVERRIDE injected for: ' + scenario.label);
   // console.log(override);
 };

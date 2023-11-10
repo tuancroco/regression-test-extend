@@ -1,20 +1,23 @@
 const autoScroll = require('../auto-scroll');
 const scrollTop = require('../scroll-top');
+const chalkImport = import('chalk').then((m) => m.default);
 
 module.exports = async (page, scenario, viewport, isReference, browserContext) => {
   await require('./embedFiles')(scenario, page);
   await page.evaluate(autoScroll);
+  const chalk = await chalkImport;
+  const logPrefix = chalk.yellow(`[${scenario.index} of ${scenario.total}] `);
 
   page.on('load', async (data) => {
     try {
       await require('./embedFiles')(scenario, data);
       await data.evaluate(require('../auto-scroll'));
     } catch (error) {
-      console.log(error);
+      console.log(logPrefix + error);
     }
   });
 
-  console.log('SCENARIO > ' + scenario.label);
+  console.log(logPrefix + 'SCENARIO > ' + scenario.label);
 
   if (!!scenario.actions) {
     await require('./actions')(page, scenario);
