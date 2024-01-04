@@ -1,12 +1,12 @@
 scenarios:
   # Scenario:
   # Testing the page without any user interaction
-  - url: https://www.tuyen.xyz/optimizely-cms/testing/form-submission-test-sample/
+  - url: https://tuyen.blog/optimizely-cms/testing/form-submission-test-sample/
     label: Visit the page
 
   # Scenario:
   # Testing the form with valid data
-  - url: https://www.tuyen.xyz/optimizely-cms/testing/form-submission-test-sample/
+  - url: https://tuyen.blog/optimizely-cms/testing/form-submission-test-sample/
     label: Testing the form with valid data
     actions:
       - input: '#signup #username'
@@ -23,14 +23,14 @@ scenarios:
 
   # Scenario:
   # Testing the form when clic submit without input any data
-  - url: https://www.tuyen.xyz/optimizely-cms/testing/form-submission-test-sample/
+  - url: https://tuyen.blog/optimizely-cms/testing/form-submission-test-sample/
     label: Testing the form when clic submit without input any data
     actions:
       - click: '#signup input[type="submit"]'
 
   # Scenario:
   # Testing the form with invalid password
-  - url: https://www.tuyen.xyz/optimizely-cms/testing/form-submission-test-sample/
+  - url: https://tuyen.blog/optimizely-cms/testing/form-submission-test-sample/
     label: Testing the form with invalid password
     actions:
       - input: '#signup #username'
@@ -45,7 +45,7 @@ scenarios:
 
   # Scenario:
   # Testing the form with Password and Confirm password mismatch
-  - url: https://www.tuyen.xyz/optimizely-cms/testing/form-submission-test-sample/
+  - url: https://tuyen.blog/optimizely-cms/testing/form-submission-test-sample/
     label: Testing the form with Password and Confirm password mismatch
     actions:
       - input: '#signup #username'

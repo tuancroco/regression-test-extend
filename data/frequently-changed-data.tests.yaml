@@ -1,7 +1,7 @@
 scenarios:
   # Scenario:
   # Testing the page without the chart
-  - url: https://www.tuyen.xyz/optimizely-cms/testing/frequently-changed-data-test-sample/
+  - url: https://tuyen.blog/optimizely-cms/testing/frequently-changed-data-test-sample/
     label: Test page without the chart - 1st way
     hideSelectors:
       - '#my-chart'
@@ -10,7 +10,7 @@ scenarios:
   # Testing the page without the chart
   # Note that this scenario is identical with the previous one,
   # using a different syntax
-  - url: https://www.tuyen.xyz/optimizely-cms/testing/frequently-changed-data-test-sample/
+  - url: https://tuyen.blog/optimizely-cms/testing/frequently-changed-data-test-sample/
     label: Test page without the chart - 2nd way
     actions:
       - hide: '#my-chart'
@@ -18,5 +18,5 @@ scenarios:
   # Scenario:
   # Testing the page WITH the chart
   # NOTE: This case will fails
-  - url: https://www.tuyen.xyz/optimizely-cms/testing/frequently-changed-data-test-sample/
+  - url: https://tuyen.blog/optimizely-cms/testing/frequently-changed-data-test-sample/
     label: Test page with the random chart

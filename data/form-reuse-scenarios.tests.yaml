@@ -1,6 +1,6 @@
 scenarios:
   # Input the form with valid username and email, but not submit it
-  - url: https://www.tuyen.xyz/optimizely-cms/testing/form-submission-test-sample/
+  - url: https://tuyen.blog/optimizely-cms/testing/form-submission-test-sample/
     label: Input the form with valid username and email
     viewportNames:
       - desktop
@@ -12,7 +12,7 @@ scenarios:
         value: test@gmail.com
 
   # Input the form with username, email and password, but not submit it
-  - url: https://www.tuyen.xyz/optimizely-cms/testing/form-submission-test-sample/
+  - url: https://tuyen.blog/optimizely-cms/testing/form-submission-test-sample/
     label: Input the form with valid password
     viewportNames:
       - desktop
@@ -25,7 +25,7 @@ scenarios:
       - input: '#signup #confirm-password'
         value: kCzs0!!kP^jIXamK}g@e
 
-  - url: https://www.tuyen.xyz/optimizely-cms/testing/form-submission-test-sample/
+  - url: https://tuyen.blog/optimizely-cms/testing/form-submission-test-sample/
     label: Submit the form
     viewportNames:
       - desktop
