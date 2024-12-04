@@ -113,7 +113,15 @@ if (data) {
       removeSelectors: s.removeSelectors ?? data.removeSelectors,
       useCssOverride: s.useCssOverride ?? data.useCssOverride,
       jsOnReadyPath: s.jsOnReadyPath,
-      viewports: s.viewportNames ? viewports.filter((v) => s.viewportNames?.includes(v.label)) : undefined,
+      viewports: !!s.viewportNames
+        ? typeof s.viewportNames === 'string'
+          ? viewports.filter((v) => v.label.toLowerCase() == (s.viewportNames as string).trim().toLowerCase())
+          : viewports.filter((v) => s.viewportNames?.includes(v.label))
+        : !!data.viewportNames
+        ? typeof data.viewportNames === 'string'
+          ? viewports.filter((v) => v.label.toLowerCase() == (data.viewportNames as string).trim().toLowerCase())
+          : viewports.filter((v) => data.viewportNames?.includes(v.label))
+        : undefined,
       referenceUrl: !isRef ? s.url : undefined,
       misMatchThreshold: s.misMatchThreshold ?? data.misMatchThreshold ?? 0.1,
       postInteractionWait: s.postInteractionWait ?? data.postInteractionWait ?? 1,

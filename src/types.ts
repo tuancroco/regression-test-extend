@@ -23,6 +23,7 @@ export interface TestSuiteModel {
   browser?: 'chromium' | 'firefox' | 'webkit';
   misMatchThreshold?: number;
   postInteractionWait?: number;
+  viewportNames?: string | string[];
 }
 
 export interface ScenarioModel extends Scenario {
@@ -34,7 +35,7 @@ export interface ScenarioModel extends Scenario {
   index: string;
   jsOnReadyPath?: string;
   total: number;
-  viewportNames?: string[];
+  viewportNames?: string | string[];
   useCssOverride?: boolean;
   noScrollTop?: boolean;
   misMatchThreshold?: number;

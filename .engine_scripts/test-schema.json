@@ -30,6 +30,19 @@
             "type": "string"
           }
         },
+        "viewportNames": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ]
+        },
         "scenarios": {
           "type": "array",
           "items": {
@@ -49,7 +62,11 @@
           "type": "string",
           "oneOf": [
             {
-              "enum": ["chromium", "firefox", "webkit"]
+              "enum": [
+                "chromium",
+                "firefox",
+                "webkit"
+              ]
             }
           ]
         },
@@ -60,7 +77,9 @@
           "type": "number"
         }
       },
-      "required": ["scenarios"],
+      "required": [
+        "scenarios"
+      ],
       "title": "TestSuite"
     },
     "UrlReplacements": {
@@ -70,15 +89,22 @@
         "ref": {
           "type": "string",
           "format": "uri",
-          "qt-uri-protocols": ["https"]
+          "qt-uri-protocols": [
+            "https"
+          ]
         },
         "test": {
           "type": "string",
           "format": "uri",
-          "qt-uri-protocols": ["https"]
+          "qt-uri-protocols": [
+            "https"
+          ]
         }
       },
-      "required": ["ref", "test"],
+      "required": [
+        "ref",
+        "test"
+      ],
       "title": "URL Replacements"
     },
     "URL": {
@@ -125,10 +151,17 @@
           "type": "string"
         },
         "viewportNames": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ]
         },
         "id": {
           "type": "string"
@@ -202,7 +235,9 @@
           "type": "number"
         }
       },
-      "required": ["url"],
+      "required": [
+        "url"
+      ],
       "title": "URL"
     },
     "CheckAction": {
@@ -270,7 +305,9 @@
           ]
         }
       },
-      "required": ["hide"]
+      "required": [
+        "hide"
+      ]
     },
     "HoverAction": {
       "type": "object",
@@ -293,7 +330,9 @@
           ]
         }
       },
-      "required": ["hover"]
+      "required": [
+        "hover"
+      ]
     },
     "InputAction": {
       "type": "object",
@@ -322,7 +361,10 @@
           ]
         }
       },
-      "required": ["input", "value"]
+      "required": [
+        "input",
+        "value"
+      ]
     },
     "InputFileAction": {
       "type": "object",
@@ -361,7 +403,10 @@
           ]
         }
       },
-      "required": ["input", "file"]
+      "required": [
+        "input",
+        "file"
+      ]
     },
     "PressAction": {
       "type": "object",
@@ -387,7 +432,10 @@
           ]
         }
       },
-      "required": ["press", "key"]
+      "required": [
+        "press",
+        "key"
+      ]
     },
     "RemoveAction": {
       "type": "object",
@@ -410,7 +458,9 @@
           ]
         }
       },
-      "required": ["remove"]
+      "required": [
+        "remove"
+      ]
     },
     "ScrollAction": {
       "type": "object",
@@ -433,7 +483,9 @@
           ]
         }
       },
-      "required": ["scroll"]
+      "required": [
+        "scroll"
+      ]
     },
     "SelectByValueAction": {
       "type": "object",
@@ -469,7 +521,10 @@
           ]
         }
       },
-      "required": ["select", "value"]
+      "required": [
+        "select",
+        "value"
+      ]
     },
     "SelectByLabelAction": {
       "type": "object",
@@ -505,7 +560,10 @@
           ]
         }
       },
-      "required": ["select", "label"]
+      "required": [
+        "select",
+        "label"
+      ]
     },
     "UncheckAction": {
       "type": "object",
@@ -560,7 +618,9 @@
           ]
         }
       },
-      "required": ["wait"]
+      "required": [
+        "wait"
+      ]
     }
   }
 }
