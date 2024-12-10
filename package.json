@@ -5,9 +5,9 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "ref": "ts-node --esm src/index.ts --command test --ref",
-    "approve": "ts-node --esm src/index.ts --command approve",
-    "test": "ts-node --esm src/index.ts --command test"
+    "ref": "tsx src/index.ts --command test --ref",
+    "approve": "tsx src/index.ts --command approve",
+    "test": "tsx src/index.ts --command test"
   },
   "author": "",
   "license": "ISC",
@@ -19,6 +19,7 @@
     "chalk": "^5.3.0",
     "js-yaml": "^4.1.0",
     "ts-node": "^10.9.1",
+    "tsx": "^4.19.2",
     "typescript": "^5.2.2"
   }
 }
