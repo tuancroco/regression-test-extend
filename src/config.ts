@@ -15,6 +15,10 @@ const engine: 'puppeteer' | 'playwright' = 'playwright';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const testSuite = getStringArg('--test-suite');
 const isRef = getFlagArg('--ref');
+const globalRequiredLogin = getFlagArg('--requiredLogin')
+if (globalRequiredLogin) {
+  console.log('force run all scenarios in login mode')
+}
 
 const scenarios: Scenario[] = [];
 
@@ -104,6 +108,7 @@ if (data) {
   data.scenarios.forEach((s, index) => {
     const opts: ScenarioModel = {
       ...s,
+      requiredLogin: globalRequiredLogin || s.requiredLogin,
       getTestUrl: getTestUrlLocal,
       url: isRef ? s.url : getTestUrl(s.url, isRef),
       index: String(index + 1).padStart(pad, ' '),

@@ -27,6 +27,7 @@ export interface TestSuiteModel {
 }
 
 export interface ScenarioModel extends Scenario {
+  requiredLogin?: boolean;
   id?: string;
   needs?: string | string[];
   actions?: unknown[];
