@@ -1,0 +1,7 @@
+- domain: www.domain.com
+  loginUrl: www.domain.com/login
+  userName: userName
+  password: password
+  userNameSelector: "#uncontrolled-tab-example-tabpane-login [name=email]"
+  passwordSelector: "#uncontrolled-tab-example-tabpane-login [name=password]"
+  loginButtonSelector: "#uncontrolled-tab-example-tabpane-login button[type=submit]"
