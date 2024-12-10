@@ -74,7 +74,7 @@ module.exports = async (currentPage, scenario) => {
           await el.evaluate((node) => (node.value = ''));
         }
 
-        await el.fill(action.value);
+        await el.type(action.value);
       } else if (!!action.file) {
         console.log(logPrefix + 'Input:', action.input, action.file);
         await page.waitForSelector(action.input);

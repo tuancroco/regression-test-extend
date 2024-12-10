@@ -85,8 +85,9 @@ const executeSignIn = async (browserContext, domain) => {
 
     await page.waitForSelector(sigInForPage.loginButtonSelector);
     console.log('found selector login button')
-    await page.click(sigInForPage.loginButtonSelector)
-    await page.waitForNavigation();
+    await Promise.all([page.click(sigInForPage.loginButtonSelector), page.waitForNavigation()])
+
+    page.close();
 
     console.log('sign in successfully', page.url())
     // Save cookies after login
