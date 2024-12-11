@@ -28,5 +28,3 @@ Please check [Documentation](https://tuyen.blog/optimizely-cms/testing/get-start
    | npm run approve -- --test-suite alloy               | a alloy | approve alloy |                     |
    | npm run ref -- --test-suite alloy                   | t alloy | test alloy    |                     |
    | npm run ref -- --test-suite sign-in --requiredLogin | t alloy | test alloy    | Run with login mode |
-
-   test
