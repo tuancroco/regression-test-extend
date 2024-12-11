@@ -4,7 +4,7 @@ name: Regression test Deploy
 on:
   push:
     branches:
-      - deploy # Chỉ chạy khi có thay đổi trên nhánh master
+      - master # Chỉ chạy khi có thay đổi trên nhánh master
     paths:
       - src/** # Chạy khi có thay đổi trong thư mục src
       - .engine_scripts/** # Chạy khi có thay đổi trong thư mục .engine_scripts
