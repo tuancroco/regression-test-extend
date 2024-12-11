@@ -18,7 +18,7 @@
     "baseUrl": ".",
     "sourceMap": true,
     "paths": {
-      "@data/*": ["visual_test/*"]
+      "@data/*": ["visual_tests/*"]
     }
   },
   "include": ["src/**/*.ts", "src/**/*.json"],
