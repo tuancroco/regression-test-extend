@@ -1,0 +1,43 @@
+name: Regression test Deploy
+
+# Controls when the action will run.
+on:
+  push:
+    branches:
+      - master # Chỉ chạy khi có thay đổi trên nhánh master
+    paths:
+      - src/** # Chạy khi có thay đổi trong thư mục src
+      - .engine_scripts/** # Chạy khi có thay đổi trong thư mục .engine_scripts
+      - README.md # Chạy khi README.md thay đổi
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    timeout-minutes: 5
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Set up Node.js and NPM for the publish step
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x' # Sử dụng phiên bản Node.js 20.x
+          registry-url: 'https://registry.npmjs.org' # Đảm bảo dùng đúng registry của NPM
+
+      # Install dependencies using npm ci for a clean and consistent install
+      - name: Install dependencies
+        run: npm ci
+
+      # Publish the package to NPM with public access
+      - name: Publish to NPM
+        run: npm publish --access public # Đảm bảo rằng gói được publish với quyền public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }} # Dùng token bảo mật NPM để xác thực

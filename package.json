@@ -1,6 +1,6 @@
 {
   "name": "@eshn/visual-regression-tests",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "eshn visual regression tests support",
   "main": "index.js",
   "type": "module",
@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/precise-alloy/regression-test.git"
+    "url": "git+https://github.com/Donhv/regression-test.git"
   },
   "keywords": [
     "cli",
