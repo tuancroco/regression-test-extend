@@ -10,7 +10,7 @@ Please check [Documentation](https://tuyen.blog/optimizely-cms/testing/get-start
    npm i @eshn/visual-regression-tests
    ```
 
-1. Set up all test and config files in the **visual_test** folder and place it at the root of the project.
+1. Set up all test and config files in the **visual_tests** folder and place it at the root of the project.
 
 1. Add to scripts in package.json:
 

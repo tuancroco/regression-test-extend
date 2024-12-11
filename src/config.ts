@@ -50,7 +50,7 @@ const getData = (testSuite: String): TestSuiteModel | undefined => {
   ];
 
   for (let i = 0; i < extensions.length; i++) {
-    const dataPath = path.resolve(__dirname, `../visual_test/${testSuite}.tests.${extensions[i].ext}`);
+    const dataPath = path.resolve(__dirname, `../visual_tests/${testSuite}.tests.${extensions[i].ext}`);
 
     if (fs.existsSync(dataPath)) {
       console.log('Data path: ', dataPath);
@@ -96,7 +96,7 @@ const expandScenarios = (model: ScenarioModel, scenarios: ScenarioModel[], level
 };
 
 const data = getData(testSuite);
-const viewports = parseDataFromFile(data?.viewportsPath ?? 'visual_test/_viewports.yaml') as ViewportNext[];
+const viewports = parseDataFromFile(data?.viewportsPath ?? 'visual_tests/_viewports.yaml') as ViewportNext[];
 if (data) {
   [].forEach.call(data.scenarios, (s: ScenarioModel) => {
     expandScenarios(s, data.scenarios, 0);
