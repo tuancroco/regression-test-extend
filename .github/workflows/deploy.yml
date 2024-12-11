@@ -8,7 +8,6 @@ on:
     paths:
       - src/** # Chạy khi có thay đổi trong thư mục src
       - .engine_scripts/** # Chạy khi có thay đổi trong thư mục .engine_scripts
-      - README.md # Chạy khi README.md thay đổi
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
