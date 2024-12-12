@@ -60,5 +60,5 @@ if (args[0] === 'ref') {
   console.log(chalk.yellow(`Running command: ${command}`));
   runCommand(command);
 } else {
-  console.log(chalk.red("Invalid command. Use one of the following: 'eshn-visual generate', 'eshn-visual approve', 'eshn-visual test'."));
+  console.log(chalk.red("Invalid command. Use one of the following: 'eshn-visual ref', 'eshn-visual approve', 'eshn-visual test'."));
 }
