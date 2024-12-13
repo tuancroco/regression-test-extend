@@ -10,8 +10,10 @@ Please check [Documentation](https://tuyen.blog/optimizely-cms/testing/get-start
    npm i @eshn/visual-regression-tests
    ```
 
-1. Set up all test and config files in the **visual_tests** folder and place it at the root of the project.
-
+1. Manual Set up all test and config files in the **visual_tests** folder and place it at the root of the project, or automatically add it using the command:
+   ```bash
+   npx eshn-visual generate
+   ```
 1. Add to scripts in package.json:
 
    ```bash
