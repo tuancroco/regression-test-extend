@@ -2,7 +2,7 @@
 import fs from 'fs';
 import path, { dirname } from 'path';
 import { exec } from 'child_process';
-import { fileURLToPath } from 'url';
+import { fileURLToPath, pathToFileURL } from 'url';
 import chalk from 'chalk';
 
 function getLibraryPath() {
