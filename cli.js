@@ -47,7 +47,17 @@ function runCommand(command) {
 const args = process.argv.slice(2);
 let commandBase = `tsx ${getLibraryPath()}/src/index.ts`;
 
-if (args[0] === 'ref') {
+if (args[0] === 'generate') {
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = dirname(__filename);
+  const postInstallPath = path.resolve(__dirname, 'generate_tests.js');
+  if (fs.existsSync(postInstallPath)) {
+    console.log(chalk.yellow('generate folder visual_tests ...'));
+    await import(postInstallPath);
+  } else {
+    console.log(chalk.red('postinstall.js not found!'));
+  }
+} else if (args[0] === 'ref') {
   const command = `${commandBase} --command test --ref ${args.slice(1).join(' ')}`;
   console.log(chalk.yellow(`Running command: ${command}`));
   runCommand(command);
@@ -60,5 +70,7 @@ if (args[0] === 'ref') {
   console.log(chalk.yellow(`Running command: ${command}`));
   runCommand(command);
 } else {
-  console.log(chalk.red("Invalid command. Use one of the following: 'eshn-visual ref', 'eshn-visual approve', 'eshn-visual test'."));
+  console.log(
+    chalk.red("Invalid command. Use one of the following: 'eshn-visual generate' 'eshn-visual ref', 'eshn-visual approve', 'eshn-visual test'.")
+  );
 }
