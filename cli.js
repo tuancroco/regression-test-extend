@@ -50,12 +50,12 @@ let commandBase = `tsx ${getLibraryPath()}/src/index.ts`;
 if (args[0] === 'generate') {
   const __filename = fileURLToPath(import.meta.url);
   const __dirname = dirname(__filename);
-  const postInstallPath = path.resolve(__dirname, 'generate_tests.js');
+  const postInstallPath = pathToFileURL(path.join(__dirname, 'generate_tests.js'));
   if (fs.existsSync(postInstallPath)) {
     console.log(chalk.yellow('generate folder visual_tests ...'));
     await import(postInstallPath);
   } else {
-    console.log(chalk.red('postinstall.js not found!'));
+    console.log(chalk.red('generate_tests.js not found!'));
   }
 } else if (args[0] === 'ref') {
   const command = `${commandBase} --command test --ref ${args.slice(1).join(' ')}`;
