@@ -40,7 +40,7 @@ const getData = (testSuite: String): TestSuiteModel | undefined => {
       parse: YAML.load,
     },
     {
-      ext: 'yaml',
+      ext: 'yml',
       parse: YAML.load,
     },
     {
