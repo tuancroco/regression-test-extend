@@ -58,6 +58,8 @@ const getData = (testSuite: String): TestSuiteModel | undefined => {
       return extensions[i].parse(content) as TestSuiteModel;
     }
   }
+
+  throw `Data file not found for test suite: ${testSuite}`;
 };
 
 const expandScenarios = (model: ScenarioModel, scenarios: ScenarioModel[], level: number) => {
