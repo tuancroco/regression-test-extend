@@ -1,14 +1,11 @@
 {
   "name": "regressify",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Visual regression tests support",
   "main": "index.js",
   "type": "module",
   "bin": {
-    "init": "./init.js",
-    "ref": "./ref.js",
-    "test": "./test.js",
-    "approve": "./approve.js"
+    "regressify": "./cli.js"
   },
   "scripts": {
     "ref": "tsx src/index.ts --command test --ref",

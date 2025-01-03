@@ -5,8 +5,9 @@ on:
     branches:
       - release
     paths:
-      - src/**
       - .engine_scripts/**
+      - src/**
+      - package.json
 
   workflow_dispatch:
 
