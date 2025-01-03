@@ -3,7 +3,7 @@ name: Regression test Deploy
 on:
   push:
     branches:
-      - master
+      - release
     paths:
       - src/**
       - .engine_scripts/**
