@@ -1,54 +1,34 @@
-# Precise Alloy - Regression Test
+# Visual Regression Test
 
 Please check [Documentation](https://tuyen.blog/optimizely-cms/testing/get-started/) for the instructions.
 
-## Get latest features and bug fixes for the tool
+## Use
 
-1. Add a remote to base test framework (only need to run one time):
-
-   ```bash
-   git remote add hn https://github.com/precise-alloy/regression-test.git
-   ```
-
-1. Periodically, get latest test frame work features and bug fixes by running the below command:
+1. Install:
 
    ```bash
-   git fetch hn
-   git merge hn/master
+   npm i -g regressify
    ```
 
-1. Commit/Push the changes to the project's repository.
+1. Manual Set up all test and config files in the **visual_tests** folder and place it at the root of the project, or automatically add it using the command:
 
-## Compare between old and new environment
-
-1. Run below command:
-
-   ```powershell
-   $env:REPLACEMENT_PROFILE = 'default'
+   ```bash
+   npx regressify init
    ```
 
-1. Execute your test suites as usual.  
-   The tests now run on old env with `ref` command and new env with `test` command`.
+1. Add to scripts in package.json:
 
-1. When your tasks are finished, either close the terminal or run below command to reset the profile:
-
-   ```powershell
-   $env:REPLACEMENT_PROFILE = ''
-   ```
-
-## Use command aliases
-
-1. Run the following command:
-
-   ```powershell
-   . ./alias.ps1
+   ```bash
+    "ref": "regressify ref",
+    "approve": "regressify approve",
+    "test": "regressify test"
    ```
 
 1. Use new command aliases:
 
    | Command                                                | Alias 1 | Alias 2       | Description         |
    | ------------------------------------------------------ | ------- | ------------- | ------------------- |
-   | npm run ref -- --test-suite alloy                      | r alloy | ref alloy     |                     |
-   | npm run approve -- --test-suite alloy                  | a alloy | approve alloy |                     |
-   | npm run ref -- --test-suite alloy                      | t alloy | test alloy    |                     |
-   | npm run ref -- --test-suite sign-in --requiredLogin    | t alloy | test alloy    | Run with login mode |
+   | regressify ref -- --test-suite alloy                   | r alloy | ref alloy     |                     |
+   | regressify approve -- --test-suite alloy               | a alloy | approve alloy |                     |
+   | regressify ref -- --test-suite alloy                   | t alloy | test alloy    |                     |
+   | regressify ref -- --test-suite sign-in --requiredLogin | t alloy | test alloy    | Run with login mode |

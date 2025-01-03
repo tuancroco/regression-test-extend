@@ -46,7 +46,7 @@
         "scenarios": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/URL"
+            "$ref": "#/definitions/TesScenario"
           }
         },
         "debug": {
@@ -82,32 +82,7 @@
       ],
       "title": "TestSuite"
     },
-    "UrlReplacements": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "ref": {
-          "type": "string",
-          "format": "uri",
-          "qt-uri-protocols": [
-            "https"
-          ]
-        },
-        "test": {
-          "type": "string",
-          "format": "uri",
-          "qt-uri-protocols": [
-            "https"
-          ]
-        }
-      },
-      "required": [
-        "ref",
-        "test"
-      ],
-      "title": "URL Replacements"
-    },
-    "URL": {
+    "TesScenario": {
       "type": "object",
       "additionalProperties": false,
       "properties": {
@@ -226,7 +201,9 @@
                 "$ref": "#/definitions/WaitAction"
               }
             ]
-          }
+          },
+          "title": "Actions",
+          "description": "Documentation: https://tuyen.blog/optimizely-cms/testing/create-action/"
         },
         "misMatchThreshold": {
           "type": "number"
@@ -240,8 +217,34 @@
       ],
       "title": "URL"
     },
+    "UrlReplacements": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "ref": {
+          "type": "string",
+          "format": "uri",
+          "qt-uri-protocols": [
+            "https"
+          ]
+        },
+        "test": {
+          "type": "string",
+          "format": "uri",
+          "qt-uri-protocols": [
+            "https"
+          ]
+        }
+      },
+      "required": [
+        "ref",
+        "test"
+      ],
+      "title": "URL Replacements"
+    },
     "CheckAction": {
       "type": "object",
+      "description": "Documentation: https://tuyen.blog/optimizely-cms/testing/create-action/#spoiler--check",
       "additionalProperties": false,
       "properties": {
         "check": {

@@ -1,24 +1,44 @@
 {
-  "name": "test",
-  "version": "1.0.0",
-  "description": "",
+  "name": "regressify",
+  "version": "1.0.12",
+  "description": "Visual regression tests support",
   "main": "index.js",
   "type": "module",
-  "scripts": {
-    "ref": "ts-node --esm src/index.ts --command test --ref",
-    "approve": "ts-node --esm src/index.ts --command approve",
-    "test": "ts-node --esm src/index.ts --command test"
+  "bin": {
+    "regressify": "./cli.js"
   },
-  "author": "",
+  "scripts": {
+    "ref": "tsx src/index.ts --command test --ref",
+    "approve": "tsx src/index.ts --command approve",
+    "test": "tsx src/index.ts --command test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/precise-alloy/regression-test.git"
+  },
+  "keywords": [
+    "cli",
+    "visual",
+    "test",
+    "regression"
+  ],
+  "author": "donghoang",
   "license": "ISC",
+  "dependencies": {
+    "backstopjs": "^6.2.2",
+    "chalk": "^5.3.0",
+    "inquirer": "^12.2.0",
+    "js-yaml": "^4.1.0",
+    "ncp": "^2.0.0",
+    "tsx": "^4.19.2"
+  },
   "devDependencies": {
     "@types/backstopjs": "^6.1.2",
     "@types/js-yaml": "^4.0.8",
     "@types/node": "^20.8.10",
-    "backstopjs": "^6.2.2",
-    "chalk": "^5.3.0",
-    "js-yaml": "^4.1.0",
-    "ts-node": "^10.9.1",
     "typescript": "^5.2.2"
+  },
+  "peerDependencies": {
+    "tsx": "^4.19.2"
   }
 }
