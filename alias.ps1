@@ -10,7 +10,7 @@ function Approve-TestSuite {
     $name
   )
   
-  npm run approve -- --test-suite $name
+  regressify approve -- --test-suite $name
 }
 
 function Reference-TestSuite {  
@@ -25,7 +25,7 @@ function Reference-TestSuite {
     $name
   )
   
-  npm run ref -- --test-suite $name
+  regressify ref -- --test-suite $name
 }
 
 function Test-TestSuite {
@@ -40,5 +40,5 @@ function Test-TestSuite {
     $name
   )
   
-  npm run test -- --test-suite $name
+  regressify test -- --test-suite $name
 }

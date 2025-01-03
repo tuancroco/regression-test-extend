@@ -26,9 +26,9 @@ Please check [Documentation](https://tuyen.blog/optimizely-cms/testing/get-start
 
 1. Use new command aliases:
 
-   | Command                                             | Alias 1 | Alias 2       | Description         |
-   | --------------------------------------------------- | ------- | ------------- | ------------------- |
-   | npm run ref -- --test-suite alloy                   | r alloy | ref alloy     |                     |
-   | npm run approve -- --test-suite alloy               | a alloy | approve alloy |                     |
-   | npm run ref -- --test-suite alloy                   | t alloy | test alloy    |                     |
-   | npm run ref -- --test-suite sign-in --requiredLogin | t alloy | test alloy    | Run with login mode |
+   | Command                                                | Alias 1 | Alias 2       | Description         |
+   | ------------------------------------------------------ | ------- | ------------- | ------------------- |
+   | regressify ref -- --test-suite alloy                   | r alloy | ref alloy     |                     |
+   | regressify approve -- --test-suite alloy               | a alloy | approve alloy |                     |
+   | regressify ref -- --test-suite alloy                   | t alloy | test alloy    |                     |
+   | regressify ref -- --test-suite sign-in --requiredLogin | t alloy | test alloy    | Run with login mode |
