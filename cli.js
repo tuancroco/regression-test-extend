@@ -6,20 +6,25 @@ import { fileURLToPath, pathToFileURL } from 'url';
 import chalk from 'chalk';
 
 function getLibraryPath() {
-  const __filename = fileURLToPath(import.meta.url);
-  const __dirname = dirname(__filename);
+  const fileName = fileURLToPath(import.meta.url);
+  let currentDir = dirname(fileName);
 
-  let currentDir = __dirname;
-  while (!fs.existsSync(path.join(currentDir, 'package.json'))) {
+  while (true) {
+    const packageJsonPath = path.join(currentDir, 'package.json');
+    if (fs.existsSync(packageJsonPath)) {
+      // We have found the package.json file
+      const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
+      return `node_modules/${packageJson.name}`;
+    }
+
     const parentDir = path.dirname(currentDir);
     if (parentDir === currentDir) {
+      // We have reached the root directory
       return null;
     }
+
     currentDir = parentDir;
   }
-  const packageJsonPath = path.join(currentDir, 'package.json');
-  const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
-  return `node_modules/${packageJson.name}`;
 }
 
 function runCommand(command) {
