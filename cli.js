@@ -52,12 +52,21 @@ let commandBase = `tsx ${getLibraryPath()}/src/index.ts`;
 if (command === 'init') {
   const __filename = fileURLToPath(import.meta.url);
   const __dirname = dirname(__filename);
+
   const postInstallPath = pathToFileURL(path.join(__dirname, 'generate_tests.js'));
   if (fs.existsSync(postInstallPath)) {
     console.log(chalk.yellow('generate folder visual_tests ...'));
     await import(postInstallPath);
   } else {
     console.log(chalk.red('generate_tests.js not found!'));
+  }
+
+  const updatePackageJsonPath = pathToFileURL(path.join(__dirname, 'update-package.js'));
+  if (fs.existsSync(updatePackageJsonPath)) {
+    console.log(chalk.yellow('update package.json ...'));
+    await import(updatePackageJsonPath);
+  } else {
+    console.log(chalk.red('update-package.js not found!'));
   }
 } else if (command === 'ref') {
   const command = `${commandBase} --command test --ref ${args.slice(1).join(' ')}`;

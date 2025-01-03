@@ -1,6 +1,6 @@
 {
   "name": "regressify",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Visual regression tests support",
   "main": "index.js",
   "type": "module",
