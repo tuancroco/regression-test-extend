@@ -13,7 +13,7 @@ Please check [Documentation](https://tuyen.blog/optimizely-cms/testing/get-start
 1. Manual Set up all test and config files in the **visual_tests** folder and place it at the root of the project, or automatically add it using the command:
 
    ```bash
-   npx regressify-cli generate
+   npx regressify-cli init
    ```
 
 1. Add to scripts in package.json:
