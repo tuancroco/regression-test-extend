@@ -12,12 +12,10 @@ async function updatePackageJson() {
   const packageJsonText = fs.readFileSync(packageJsonPath, 'utf8');
   const packageJson = JSON.parse(packageJsonText);
 
-  const scripts = packageJson.scripts || {};
-  scripts.ref = 'regressify ref';
-  scripts.approve = 'regressify approve';
-  scripts.test = 'regressify test';
-
-  packageJson.scripts = scripts;
+  packageJson.scripts = packageJson.scripts || {};
+  packageJson.scripts.ref = 'regressify ref';
+  packageJson.scripts.approve = 'regressify approve';
+  packageJson.scripts.test = 'regressify test';
 
   fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2));
 }
