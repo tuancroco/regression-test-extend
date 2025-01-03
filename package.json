@@ -6,9 +6,9 @@
   "type": "module",
   "bin": {
     "init": "./init.js",
-    "r": "./ref.js",
-    "t": "./test.js",
-    "a": "./approve.js"
+    "ref": "./ref.js",
+    "test": "./test.js",
+    "approve": "./approve.js"
   },
   "scripts": {
     "ref": "tsx src/index.ts --command test --ref",
