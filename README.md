@@ -7,19 +7,21 @@ Please check [Documentation](https://tuyen.blog/optimizely-cms/testing/get-start
 1. Install:
 
    ```bash
-   npm i @eshn/visual-regression-tests
+   npm i regressify
    ```
 
 1. Manual Set up all test and config files in the **visual_tests** folder and place it at the root of the project, or automatically add it using the command:
+
    ```bash
-   npx eshn-visual generate
+   npx regressify-cli generate
    ```
+
 1. Add to scripts in package.json:
 
    ```bash
-    "ref": "eshn-visual ref",
-    "approve": "eshn-visual approve",
-    "test": "eshn-visual test"
+    "ref": "regressify-cli ref",
+    "approve": "regressify-cli approve",
+    "test": "regressify-cli test"
    ```
 
 1. Use new command aliases:
