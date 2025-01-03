@@ -45,9 +45,11 @@ function runCommand(command) {
 }
 
 const args = process.argv.slice(2);
+const command = args[0].toLowerCase();
+
 let commandBase = `tsx ${getLibraryPath()}/src/index.ts`;
 
-if (args[0] === 'init') {
+if (command === 'init') {
   const __filename = fileURLToPath(import.meta.url);
   const __dirname = dirname(__filename);
   const postInstallPath = pathToFileURL(path.join(__dirname, 'generate_tests.js'));
@@ -57,15 +59,15 @@ if (args[0] === 'init') {
   } else {
     console.log(chalk.red('generate_tests.js not found!'));
   }
-} else if (args[0] === 'ref') {
+} else if (command === 'ref') {
   const command = `${commandBase} --command test --ref ${args.slice(1).join(' ')}`;
   console.log(chalk.yellow(`Running command: ${command}`));
   runCommand(command);
-} else if (args[0] === 'approve') {
+} else if (command === 'approve') {
   const command = `${commandBase} --command approve ${args.slice(1).join(' ')}`;
   console.log(chalk.yellow(`Running command: ${command}`));
   runCommand(command);
-} else if (args[0] === 'test') {
+} else if (command === 'test') {
   const command = `${commandBase} --command test ${args.slice(1).join(' ')}`;
   console.log(chalk.yellow(`Running command: ${command}`));
   runCommand(command);
