@@ -13,15 +13,15 @@ Please check [Documentation](https://tuyen.blog/optimizely-cms/testing/get-start
 1. Manual Set up all test and config files in the **visual_tests** folder and place it at the root of the project, or automatically add it using the command:
 
    ```bash
-   npx regressify-cli init
+   npx regressify init
    ```
 
 1. Add to scripts in package.json:
 
    ```bash
-    "ref": "regressify-cli ref",
-    "approve": "regressify-cli approve",
-    "test": "regressify-cli test"
+    "ref": "regressify ref",
+    "approve": "regressify approve",
+    "test": "regressify test"
    ```
 
 1. Use new command aliases:

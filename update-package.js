@@ -13,9 +13,9 @@ async function updatePackageJson() {
   const packageJson = JSON.parse(packageJsonText);
 
   const scripts = packageJson.scripts || {};
-  scripts.ref = 'regressify-cli ref';
-  scripts.approve = 'regressify-cli approve';
-  scripts.test = 'regressify-cli test';
+  scripts.ref = 'regressify ref';
+  scripts.approve = 'regressify approve';
+  scripts.test = 'regressify test';
 
   packageJson.scripts = scripts;
 
