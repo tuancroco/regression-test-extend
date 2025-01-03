@@ -7,7 +7,7 @@ Please check [Documentation](https://tuyen.blog/optimizely-cms/testing/get-start
 1. Install:
 
    ```bash
-   npm i regressify
+   npm i -g regressify
    ```
 
 1. Manual Set up all test and config files in the **visual_tests** folder and place it at the root of the project, or automatically add it using the command:
