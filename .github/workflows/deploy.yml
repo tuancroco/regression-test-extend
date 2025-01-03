@@ -8,6 +8,8 @@ on:
       - .engine_scripts/**
       - src/**
       - package.json
+      - cli.js
+      - generate-tests.js
 
   workflow_dispatch:
 

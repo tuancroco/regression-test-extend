@@ -47,7 +47,7 @@ function runCommand(command) {
 const args = process.argv.slice(2);
 let commandBase = `tsx ${getLibraryPath()}/src/index.ts`;
 
-if (args[0] === 'generate') {
+if (args[0] === 'init') {
   const __filename = fileURLToPath(import.meta.url);
   const __dirname = dirname(__filename);
   const postInstallPath = pathToFileURL(path.join(__dirname, 'generate_tests.js'));
@@ -70,7 +70,5 @@ if (args[0] === 'generate') {
   console.log(chalk.yellow(`Running command: ${command}`));
   runCommand(command);
 } else {
-  console.log(
-    chalk.red("Invalid command. Use one of the following: 'eshn-visual generate' 'eshn-visual ref', 'eshn-visual approve', 'eshn-visual test'.")
-  );
+  console.log(chalk.red("Invalid command. Use one of the following: 'regressify init' 'regressify ref', 'regressify approve', 'regressify test'."));
 }
