@@ -14,12 +14,18 @@ function getLibraryPath() {
     if (fs.existsSync(packageJsonPath)) {
       // We have found the package.json file
       const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
-      return `node_modules/${packageJson.name}`;
+      if (
+        (packageJson.dependencies && packageJson.dependencies['regressify']) ||
+        (packageJson.devDependencies && packageJson.devDependencies['regressify'])
+      ) {
+        return `node_modules/${packageJson.name}`;
+      }
     }
 
     const parentDir = path.dirname(currentDir);
     if (parentDir === currentDir) {
       // We have reached the root directory
+      console.log(chalk.red('Could not find package.json file in the current directory or any of its parents. Current directory:'), import.meta.url);
       return null;
     }
 
