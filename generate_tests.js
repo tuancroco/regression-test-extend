@@ -1,8 +1,10 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { ncp } from 'ncp';
+import pkg from 'ncp';
 import chalk from 'chalk';
+
+const { ncp } = pkg;
 
 async function askUser() {
   const sourceFolder = path.join(path.dirname(fileURLToPath(import.meta.url)), 'visual_tests');
