@@ -20,6 +20,7 @@ function getLibraryPath() {
     const parentDir = path.dirname(currentDir);
     if (parentDir === currentDir) {
       // We have reached the root directory
+      console.log(chalk.red('Could not find package.json file in the current directory or any of its parents. Current directory:'), import.meta.url);
       return null;
     }
 
